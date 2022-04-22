@@ -1,0 +1,41 @@
+body {
+	background-color: #0095da;
+}
+
+#id_logo {
+	width: 150px;
+	height: 150px;
+}
+
+#id_api {
+	float: right;
+	margin-top: 2%;
+	margin-right: 2%;
+	height: 75px;
+}
+
+#id_miembros {
+	width: 30%;
+	height: 200px;
+	text-align: center;
+	margin: auto;
+}
+
+#id_descripcion {
+	width: 70%;
+	margin: auto;
+	text-align: justify;
+}
+
+#id_descripcion h1 {
+	text-align: center;
+}
+
+#id_nota {
+	width: 25%;
+	heigth: 10px;
+	bottom: 0;
+	text-align: center;
+	margin: auto;
+	font-size: small;
+}

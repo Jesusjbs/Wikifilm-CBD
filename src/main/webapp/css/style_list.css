@@ -1,0 +1,77 @@
+body {
+	background-color: #0095da;
+}
+
+p {
+	font-size: medium;
+}
+
+h1 {
+	text-align: center;
+	font-size: 250%;
+}
+
+#id_div {
+	width: 50%;
+	border: 2px solid;
+	margin: auto;
+	margin-bottom: 2%;
+	border-radius: 4px;
+	display: flex;
+}
+
+#id_formDatos {
+	max-width: 85%;
+	min-width: 85%;
+	text-align: center;
+	padding-top: 1%;
+}
+
+#id_formD {
+	padding-top: 1.5%;
+	margin-left: auto;
+}
+
+#id_formE {
+	position: absolute;
+	padding-top: 0.85%;
+	margin-left: 40.8%;
+}
+
+#id_listBtn {
+	font-size: large;
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+#titleBtn {
+	cursor: pointer;
+	background: none;
+	border: none;
+}
+
+#id_editBtn {
+	cursor: pointer;
+	background: none;
+	border: none;
+	float: right;
+}
+
+#id_deleteBtn {
+	cursor: pointer;
+	background: none;
+	border: none;
+	float: right;
+}
+
+#id_divAdd {
+	width: 3%;
+	margin: auto;
+}
+
+#id_addBtn {
+	cursor: pointer;
+	background: none;
+	border: none;
+}

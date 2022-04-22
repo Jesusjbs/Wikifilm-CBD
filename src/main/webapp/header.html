@@ -1,0 +1,22 @@
+		<link rel="stylesheet" type="text/css" href="./css/style_header.css">
+		<meta charset="UTF-8">
+		<div id="id_superior">
+		<a href="index.jsp"><img id="id_logo" title="Wikifilm" alt="Logo.png" src="./img/Logo.png" /></a>
+		
+		<form id="searchForm" action="SearchController" method="post">
+			<div id="id_divSearch">
+				<input id="id_search" size=50 type="text" name="searchQuery" placeholder="Buscar" required />
+				<input type="hidden" name="pageQuery" value="1" />	
+				<button id="id_bt" type="submit" value="">
+					<img id="id_imgSearch" src="./img/searchButton.png" />
+				</button>
+			</div>
+				<input type="hidden" id="id_3" name="searchType" value="" checked />
+		</form>
+		<form id="listForm" action="ListController" method="post">
+			<button title="Ver mis listas" type="submit" id='listBtn'>
+				<img id="listIMG" src="./img/list.png" alt="Mis Listas"
+					title="Mis Listas" />
+			</button>
+		</form>
+		</div>

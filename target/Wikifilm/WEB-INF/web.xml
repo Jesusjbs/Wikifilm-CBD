@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  	<display-name>Wikifilm</display-name>
+	<listener>
+    	<listener-class>cbd.util.WikifilmListener</listener-class>
+  	</listener>
+  	<listener>
+    	<listener-class>cbd.util.WikifilmListener</listener-class>
+  	</listener>
+
+	<servlet>
+	    <description></description>
+	    <display-name>SearchController</display-name>
+	    <servlet-name>SearchController</servlet-name>
+	    <servlet-class>cbd.controller.SearchController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>SearchController</servlet-name>
+	    <url-pattern>/SearchController</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<description></description>
+	    <display-name>TitleController</display-name>
+	    <servlet-name>TitleController</servlet-name>
+	    <servlet-class>cbd.controller.TitleController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>TitleController</servlet-name>
+	    <url-pattern>/TitleController</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+		<description></description>
+    	<display-name>CommentController</display-name>
+	    <servlet-name>CommentController</servlet-name>
+    	<servlet-class>cbd.controller.CommentController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>CommentController</servlet-name>
+    	<url-pattern>/CommentController</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+    	<description></description>
+    	<display-name>ActorController</display-name>
+    	<servlet-name>ActorController</servlet-name>
+    	<servlet-class>cbd.controller.ActorController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>ActorController</servlet-name>
+    	<url-pattern>/ActorController</url-pattern>
+	</servlet-mapping>
+ 
+	<servlet>
+    	<description></description>
+    	<display-name>UserController</display-name>
+    	<servlet-name>UserController</servlet-name>
+    	<servlet-class>cbd.controller.UserController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>UserController</servlet-name>
+    	<url-pattern>/UserController</url-pattern>
+	</servlet-mapping>
+ 
+	<servlet>
+		<description></description>
+	    <display-name>ListController</display-name>
+	    <servlet-name>ListController</servlet-name>
+    <servlet-class>cbd.controller.ListController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ListController</servlet-name>
+	    <url-pattern>/ListController</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+    	<description></description>
+    	<display-name>ListIDController</display-name>
+	    <servlet-name>ListIDController</servlet-name>
+	    <servlet-class>cbd.controller.ListIDController</servlet-class>
+  </servlet>
+	<servlet-mapping>
+	    <servlet-name>ListIDController</servlet-name>
+	    <url-pattern>/ListIDController</url-pattern>
+	</servlet-mapping>
+  
+	<servlet>
+    	<description></description>
+	    <display-name>ItemController</display-name>
+	    <servlet-name>ItemController</servlet-name>
+	    <servlet-class>cbd.controller.ItemController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ItemController</servlet-name>
+	    <url-pattern>/ItemController</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+	    <description></description>
+	    <display-name>DBController</display-name>
+	    <servlet-name>DBController</servlet-name>
+	    <servlet-class>cbd.controller.DBController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+    	<servlet-name>DBController</servlet-name>
+    	<url-pattern>/DBController</url-pattern>
+	</servlet-mapping>
+  
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	  	<!-- Error page -->
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.jsp</location>
+	</error-page>
+</web-app>
