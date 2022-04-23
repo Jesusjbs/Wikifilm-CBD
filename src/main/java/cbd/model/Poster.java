@@ -13,7 +13,7 @@ public class Poster implements Serializable {
 	@Id
 	@GeneratedValue
 	Long id;
-	private String profilePath;
+	protected String profilePath;
 
 	public String getProfilePath() {
 		return profilePath;

@@ -18,19 +18,19 @@
 		<c:forEach items="${requestScope.movies}" var="movie">			
 			<form id="tituloForm" action="TitleController" method="post">
 				<input value='${movie.id}' name='titleQuery' type='hidden' /> 
-				<input value='${movie.titulo}' name='trailerQuery' type='hidden' /> 
-				<input value='${movie.fecha}' name='yearTrailerQuery' type='hidden' /> 
-				<input value='${movie.mediaType}' name='mediaQuery' type='hidden' /> 
+				<input value='${movie.title}' name='trailerQuery' type='hidden' /> 
+				<input value='${movie.released}' name='yearTrailerQuery' type='hidden' /> 
+				<input value='movie' name='mediaQuery' type='hidden' /> 
 				<input value='${param.searchType}' name='tipoQuery' type='hidden' />
-				<button title="${movie.titulo}" type="submit" id='titleBtn'>
-					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${movie.posterPath}' /><br />
-					<p>${movie.titulo}</p>
+				<button title="${movie.title}" type="submit" id='titleBtn'>
+					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${movie.profilePath}' /><br />
+					<p>${movie.title}</p>
 				</button>
 				<br />
-				<c:if test="${movie.fecha != ''}">
-				<p id="id_sub">${movie.fecha}</p>
+				<c:if test="${movie.released != ''}">
+				<p id="id_sub">${movie.released}</p>
 				</c:if>
-				<c:if test="${movie.fecha == ''}">
+				<c:if test="${movie.released == ''}">
 				<p id="id_sub">(N/A)</p>
 				</c:if>
 				<br /> <br />
@@ -39,19 +39,19 @@
 		<c:forEach items="${requestScope.series}" var="serie">			
 			<form id="tituloForm" action="TitleController" method="post">
 				<input value='${serie.id}' name='titleQuery' type='hidden' /> 
-				<input value='${serie.titulo}' name='trailerQuery' type='hidden' /> 
-				<input value='${serie.fecha}' name='yearTrailerQuery' type='hidden' /> 
-				<input value='${serie.mediaType}' name='mediaQuery' type='hidden' /> 
+				<input value='${serie.title}' name='trailerQuery' type='hidden' /> 
+				<input value='${serie.released}' name='yearTrailerQuery' type='hidden' /> 
+				<input value='serie' name='mediaQuery' type='hidden' /> 
 				<input value='${param.searchType}' name='tipoQuery' type='hidden' />
-				<button title="${serie.titulo}" type="submit" id='titleBtn'>
-					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${serie.posterPath}' /><br />
-					<p>${serie.titulo}</p>
+				<button title="${serie.title}" type="submit" id='titleBtn'>
+					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${serie.profilePath}' /><br />
+					<p>${serie.title}</p>
 				</button>
 				<br />
-				<c:if test="${serie.fecha != ''}">
-				<p id="id_sub">${serie.fecha}</p>
+				<c:if test="${serie.released != ''}">
+				<p id="id_sub">${serie.released}</p>
 				</c:if>
-				<c:if test="${serie.fecha == ''}">
+				<c:if test="${serie.released == ''}">
 				<p id="id_sub">(N/A)</p>
 				</c:if>
 				<br /> <br />

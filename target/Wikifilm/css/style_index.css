@@ -14,6 +14,7 @@
 
 body {
 	background-color: #0095da;
+     font-family: sans-serif;
 }
 
 #id_divMain {
@@ -103,8 +104,13 @@ body {
 	margin: 1%;
 }
 
+#populateForm {
+	text-align: center;
+	margin-top: 2rem;
+}
+
 #id_footer {
-	position:absolute;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 	width: 100%;
@@ -113,5 +119,6 @@ body {
 }
 
 #id_footer a {
+	text-decoration: none;
 	color: white;
 }

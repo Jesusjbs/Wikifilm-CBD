@@ -21,7 +21,7 @@
 
 #id_sub {
 	color: #C7C7C7;
-	width:83%;
+	width: 83%;
 }
 
 #titleBtn {
@@ -51,6 +51,7 @@
 body {
 	text-aling: center;
 	background-color: #0095da;
+     font-family: sans-serif;
 }
 
 #id_divPaginacion {

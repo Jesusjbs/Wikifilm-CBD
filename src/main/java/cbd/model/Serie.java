@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.annotations.Unique;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -20,6 +21,7 @@ public class Serie extends Poster implements Serializable {
 	@Id
 	@GeneratedValue
 	Long id;
+	@Unique
 	private String title;
 	private LocalDate released;
 	private String runtime;
@@ -39,7 +41,7 @@ public class Serie extends Poster implements Serializable {
 	}
 
 	public Serie(String title, LocalDate released, String runtime, String plot, Integer totalSeasons, String genre,
-			String channel, Boolean terminated) {
+			String channel, Boolean terminated, String poster) {
 		this.title = title;
 		this.released = released;
 		this.runtime = runtime;
@@ -48,6 +50,7 @@ public class Serie extends Poster implements Serializable {
 		this.genre = genre;
 		this.channel = channel;
 		this.terminated = terminated;
+		this.profilePath = poster;
 	}
 
 	public LocalDate getReleased() {

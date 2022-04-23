@@ -25,7 +25,7 @@ public class SearchRepository {
 		try {
 			em.getTransaction().begin();
 			result = em.createQuery("SELECT m FROM Movie m WHERE UPPER(m.title) LIKE UPPER(:query)", Movie.class)
-					.setParameter("query", query).getResultList();
+					.setParameter("query", "%" + query + "%").getResultList();
 		} finally {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();
@@ -39,7 +39,7 @@ public class SearchRepository {
 		try {
 			em.getTransaction().begin();
 			result = em.createQuery("SELECT s FROM Serie s WHERE UPPER(s.title) LIKE UPPER(:query)", Serie.class)
-					.setParameter("query", query).getResultList();
+					.setParameter("query", "%" + query + "%").getResultList();
 		} finally {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();
@@ -55,9 +55,9 @@ public class SearchRepository {
 		try {
 			em.getTransaction().begin();
 			resultM = em.createQuery("SELECT m FROM Movie m WHERE UPPER(m.title) LIKE UPPER(:query)", Movie.class)
-					.setParameter("query", query).getResultList();
+					.setParameter("query", "%" + query + "%").getResultList();
 			resultS = em.createQuery("SELECT s FROM Serie s WHERE UPPER(s.title) LIKE UPPER(:query)", Serie.class)
-					.setParameter("query", query).getResultList();
+					.setParameter("query", "%" + query + "%").getResultList();
 		} finally {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();

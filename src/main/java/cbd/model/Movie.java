@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.jdo.annotations.Unique;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,6 +22,7 @@ public class Movie extends Poster implements Serializable {
 	@Id
 	@GeneratedValue
 	Long id;
+	@Unique
 	private String title;
 	private LocalDate released;
 	private String runtime;
@@ -36,13 +38,13 @@ public class Movie extends Poster implements Serializable {
 	public Movie() {
 	}
 
-	public Movie(String title, LocalDate released, String runtime, String plot, String genre) {
-		super();
+	public Movie(String title, LocalDate released, String runtime, String plot, String genre, String poster) {
 		this.title = title;
 		this.released = released;
 		this.runtime = runtime;
 		this.plot = plot;
 		this.genre = genre;
+		this.profilePath = poster;
 	}
 
 	public LocalDate getReleased() {

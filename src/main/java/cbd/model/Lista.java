@@ -1,10 +1,12 @@
 package cbd.model;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Lista implements Serializable {
@@ -15,6 +17,12 @@ public class Lista implements Serializable {
 	Long id;
 
 	private String title;
+	
+	@ManyToOne(optional = true)
+	private Set<Movie> peliculas;
+	
+	@ManyToOne(optional = true)
+	private Set<Serie> series;
 
 	public Lista() {
 	}
@@ -37,6 +45,22 @@ public class Lista implements Serializable {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public Set<Movie> getPeliculas() {
+		return peliculas;
+	}
+
+	public void setPeliculas(Set<Movie> peliculas) {
+		this.peliculas = peliculas;
+	}
+
+	public Set<Serie> getSeries() {
+		return series;
+	}
+
+	public void setSeries(Set<Serie> series) {
+		this.series = series;
 	}
 
 }

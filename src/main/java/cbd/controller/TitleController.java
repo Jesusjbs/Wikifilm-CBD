@@ -1,8 +1,11 @@
 package cbd.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,6 +25,10 @@ public class TitleController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
+		EntityManager em = emf.createEntityManager();
+
 		String id = request.getParameter("titleQuery");
 		String media = request.getParameter("mediaQuery");
 		String tipo = request.getParameter("tipoQuery");
@@ -47,14 +54,24 @@ public class TitleController extends HttpServlet {
 			request.setAttribute("token", "si");
 		}
 
-		// Search for movie in TMDB and YouTube
 		TitleRepository tmdb = new TitleRepository();
 		Movie mvResult = null;
 		Serie sResult = null;
+		List<String> posterActores = new ArrayList<>();
+		List<String> nombreActores = new ArrayList<>();
+
 		if (media.equals("movie") || tipo.equals("movie")) {
-			mvResult = tmdb.getMovie(id);
+			mvResult = tmdb.getMovie(id, em);
+			if (mvResult.getActors() != null) {
+				mvResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
+				mvResult.getActors().forEach(x -> nombreActores.add(x.getName()));
+			}
 		} else {
-			sResult = tmdb.getSerie(id);
+			sResult = tmdb.getSerie(id, em);
+			if (sResult.getActors() != null) {
+				sResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
+				sResult.getActors().forEach(x -> nombreActores.add(x.getName()));
+			}
 		}
 
 		if ((mvResult != null || sResult != null)) {
@@ -65,25 +82,25 @@ public class TitleController extends HttpServlet {
 				request.setAttribute("runtime", mvResult.getRuntime());
 				request.setAttribute("genres", mvResult.getGenre());
 				request.setAttribute("plot", mvResult.getPlot());
-//				request.setAttribute("poster", mvResult.getProfilePath());
+				request.setAttribute("poster", mvResult.getProfilePath());
 				request.setAttribute("id", mvResult.getId());
-//				request.setAttribute("posterActores", posterActores);
-//				request.setAttribute("nombreActores", nombreActores);
-//				request.setAttribute("tamLista", posterActores.size());
+				request.setAttribute("posterActores", posterActores);
+				request.setAttribute("nombreActores", nombreActores);
+				request.setAttribute("tamLista", posterActores.size());
 			} else {
 				request.setAttribute("title", sResult.getTitle());
 				request.setAttribute("released", sResult.getReleased());
 				request.setAttribute("runtime", sResult.getRuntime());
 				request.setAttribute("genres", sResult.getGenre());
 				request.setAttribute("plot", sResult.getPlot());
-//				request.setAttribute("poster", sResult.getProfilePath());
+				request.setAttribute("poster", sResult.getProfilePath());
 				request.setAttribute("totalSeasons", sResult.getTotalSeasons());
 				request.setAttribute("estado", sResult.getTerminated());
 				request.setAttribute("id", sResult.getId());
 				request.setAttribute("ver", sResult.getChannel());
-//				request.setAttribute("posterActores", posterActores);
-//				request.setAttribute("nombreActores", nombreActores);
-//				request.setAttribute("tamLista", posterActores.size());
+				request.setAttribute("posterActores", posterActores);
+				request.setAttribute("nombreActores", nombreActores);
+				request.setAttribute("tamLista", posterActores.size());
 
 			}
 			request.setAttribute("type", tipo);

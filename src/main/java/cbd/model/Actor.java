@@ -3,6 +3,7 @@ package cbd.model;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+import javax.jdo.annotations.Unique;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,6 +15,7 @@ public class Actor extends Poster implements Serializable {
 	@Id
 	@GeneratedValue
 	Long id;
+	@Unique
 	private String name;
 	private LocalDate birthday;
 	private LocalDate deathday;
@@ -26,7 +28,7 @@ public class Actor extends Poster implements Serializable {
 	}
 
 	public Actor(String name, LocalDate birthday, LocalDate deathday, Integer age, String biography,
-			String placeOfBirth, String gender) {
+			String placeOfBirth, String gender, String poster) {
 		this.name = name;
 		this.birthday = birthday;
 		this.deathday = deathday;
@@ -34,6 +36,7 @@ public class Actor extends Poster implements Serializable {
 		this.biography = biography;
 		this.placeOfBirth = placeOfBirth;
 		this.gender = gender;
+		this.profilePath = poster;
 	}
 
 	public Long getId() {
