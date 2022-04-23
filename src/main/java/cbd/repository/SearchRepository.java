@@ -6,19 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import cbd.model.Movie;
+import cbd.model.Pair;
 import cbd.model.Serie;
 
 public class SearchRepository {
-
-	public class Pair<A, B> {
-		public final A a;
-		public final B b;
-
-		public Pair(A a, B b) {
-			this.a = a;
-			this.b = b;
-		}
-	};
 
 	public List<Movie> getMovies(String query, EntityManager em) {
 		List<Movie> result = new ArrayList<>();
@@ -63,6 +54,6 @@ public class SearchRepository {
 				em.getTransaction().rollback();
 			em.close();
 		}
-		return new Pair(resultM, resultS);
+		return new Pair<List<Movie>, List<Serie>>(resultM, resultS);
 	}
 }

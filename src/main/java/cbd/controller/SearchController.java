@@ -13,9 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cbd.model.Movie;
+import cbd.model.Pair;
 import cbd.model.Serie;
 import cbd.repository.SearchRepository;
-import cbd.repository.SearchRepository.Pair;
 
 /**
  * Servlet implementation class SearchController

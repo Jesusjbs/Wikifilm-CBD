@@ -3,6 +3,8 @@ package cbd.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +20,10 @@ public class ListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
+		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
+		EntityManager em = emf.createEntityManager();
+
 		RequestDispatcher rd = null;
 		HttpSession misession = (HttpSession) request.getSession();
 
@@ -25,16 +31,15 @@ public class ListController extends HttpServlet {
 			rd = request.getRequestDispatcher("/AuthController");
 		} else {
 			String aId = (String) misession.getAttribute("accountId");
-			String sId = (String) misession.getAttribute("sessionId");
 			String titleList = request.getParameter("titleList");
 
 			ListRepository lr = new ListRepository();
-			List<Lista> lResult = lr.getLists(aId, sId);
+			List<Lista> lResult = lr.getLists(aId, em);
 
 			if (titleList == "" || titleList == null) {
 				rd = request.getRequestDispatcher("/list.jsp");
 			} else {
-				Lista lcResult = lr.createList((String) misession.getAttribute("atoken"), titleList);
+				Lista lcResult = lr.createList((String) misession.getAttribute("atoken"), titleList, em);
 				request.setAttribute("mensaje",
 						"La lista " + titleList + " fue creada correctamente con id " + lcResult.getId());
 				rd = request.getRequestDispatcher("/createList.jsp");

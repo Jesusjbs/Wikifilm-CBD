@@ -11,7 +11,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import cbd.model.Lista;
 import cbd.model.Movie;
@@ -34,7 +33,6 @@ public class TitleController extends HttpServlet {
 		String tipo = request.getParameter("tipoQuery");
 		String mensaje = request.getParameter("message");
 		RequestDispatcher rd = null;
-		HttpSession misession = (HttpSession) request.getSession();
 
 		if (id == null) { // Si no se ha accedido desde búsqueda...
 			id = (String) request.getSession().getAttribute("titleQuery");
@@ -44,11 +42,10 @@ public class TitleController extends HttpServlet {
 
 		String aToken = (String) request.getSession().getAttribute("atoken");
 		if (aToken != "" && aToken != null) {
-			String aId = (String) misession.getAttribute("accountId");
-			String sId = (String) misession.getAttribute("sessionId");
+
 
 			ListRepository lr = new ListRepository();
-			List<Lista> lResult = lr.getLists(aId, sId);
+			List<Lista> lResult = lr.getLists(aToken, em);
 
 			request.setAttribute("lista", lResult);
 			request.setAttribute("token", "si");
@@ -57,20 +54,23 @@ public class TitleController extends HttpServlet {
 		TitleRepository tmdb = new TitleRepository();
 		Movie mvResult = null;
 		Serie sResult = null;
+		List<Long> idActores = new ArrayList<>();
 		List<String> posterActores = new ArrayList<>();
 		List<String> nombreActores = new ArrayList<>();
 
 		if (media.equals("movie") || tipo.equals("movie")) {
 			mvResult = tmdb.getMovie(id, em);
 			if (mvResult.getActors() != null) {
-				mvResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
-				mvResult.getActors().forEach(x -> nombreActores.add(x.getName()));
+				mvResult.getActors().subList(0, 8).forEach(x -> idActores.add(x.getId()));				
+				mvResult.getActors().subList(0, 8).forEach(x -> posterActores.add(x.getProfilePath()));
+				mvResult.getActors().subList(0, 8).forEach(x -> nombreActores.add(x.getName()));
 			}
 		} else {
 			sResult = tmdb.getSerie(id, em);
 			if (sResult.getActors() != null) {
-				sResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
-				sResult.getActors().forEach(x -> nombreActores.add(x.getName()));
+				sResult.getActors().subList(0, 8).forEach(x -> idActores.add(x.getId()));				
+				sResult.getActors().subList(0, 8).forEach(x -> posterActores.add(x.getProfilePath()));
+				sResult.getActors().subList(0, 8).forEach(x -> nombreActores.add(x.getName()));
 			}
 		}
 
@@ -84,9 +84,6 @@ public class TitleController extends HttpServlet {
 				request.setAttribute("plot", mvResult.getPlot());
 				request.setAttribute("poster", mvResult.getProfilePath());
 				request.setAttribute("id", mvResult.getId());
-				request.setAttribute("posterActores", posterActores);
-				request.setAttribute("nombreActores", nombreActores);
-				request.setAttribute("tamLista", posterActores.size());
 			} else {
 				request.setAttribute("title", sResult.getTitle());
 				request.setAttribute("released", sResult.getReleased());
@@ -98,11 +95,12 @@ public class TitleController extends HttpServlet {
 				request.setAttribute("estado", sResult.getTerminated());
 				request.setAttribute("id", sResult.getId());
 				request.setAttribute("ver", sResult.getChannel());
-				request.setAttribute("posterActores", posterActores);
-				request.setAttribute("nombreActores", nombreActores);
-				request.setAttribute("tamLista", posterActores.size());
 
 			}
+			request.setAttribute("idActor", idActores);
+			request.setAttribute("posterActores", posterActores);
+			request.setAttribute("nombreActores", nombreActores);
+			request.setAttribute("tamLista", posterActores.size());
 			request.setAttribute("type", tipo);
 			request.setAttribute("media", media);
 			request.setAttribute("message", mensaje);

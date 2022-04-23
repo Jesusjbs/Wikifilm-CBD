@@ -2,6 +2,8 @@ package cbd.controller;
 
 import java.io.IOException;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -17,21 +19,24 @@ public class ItemController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
+		EntityManager em = emf.createEntityManager();
+		
 		RequestDispatcher rd = null;
 		HttpSession misession = (HttpSession) request.getSession();
 
 		String tipo = request.getParameter("media");
-		String tipo2 = request.getParameter("tipo");		
 		String idItem = request.getParameter("idItem");
 		String idLista = request.getParameter("lista");
 		String aToken = (String) misession.getAttribute("atoken");
 
 		ListRepository lr = new ListRepository();
-		if(tipo.contains("tv") || tipo2.contains("serie")) {
-			lr.addItem(aToken, Integer.valueOf(idLista), Integer.valueOf(idItem), "tv");
+		if(tipo.contains("serie")) {
+			lr.addItem(aToken, Integer.valueOf(idLista), Integer.valueOf(idItem), "serie", em);
 		}
 		else {
-			lr.addItem(aToken, Integer.valueOf(idLista), Integer.valueOf(idItem), "movie");
+			lr.addItem(aToken, Integer.valueOf(idLista), Integer.valueOf(idItem), "movie", em);
 		}
 		rd = request.getRequestDispatcher("/ListController");
 		rd.forward(request, response);

@@ -15,21 +15,37 @@
 	</header>
 	<h1>Mostrando la lista "${requestScope.nombreLista}" con ID ${requestScope.idLista}</h1>
 	<fieldset id="tmdb">
-		<c:forEach items="${requestScope.items}" var="item">
+		<c:forEach items="${requestScope.itemsMovies}" var="item">
 			<form id="tituloForm" action="TitleController" method="post">
 				<input value='${item.id}' name='titleQuery' type='hidden' /> 
-				<input value='${item.titulo}' name='trailerQuery' type='hidden' /> 
-				<input value='${item.fecha}' name='yearTrailerQuery' type='hidden' /> 
-				<input value='${item.mediaType}' name='mediaQuery' type='hidden' /> 
-				<button title="${item.titulo}" type="submit" id='titleBtn'>
-					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${item.posterPath}' /><br />
-					<p>${item.titulo}</p>
+				<input value='serie' name='mediaQuery' type='hidden' /> 
+				<button title="${item.title}" type="submit" id='titleBtn'>
+					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${item.profilePath}' /><br />
+					<p>${item.title}</p>
 				</button>
 				<br />
-				<c:if test="${item.fecha != ''}">
-					<p id="id_sub">${item.fecha}</p>
+				<c:if test="${item.released != ''}">
+					<p id="id_sub">${item.released}</p>
 				</c:if>
-				<c:if test="${item.fecha == ''}">
+				<c:if test="${item.released == ''}">
+					<p id="id_sub">(N/A)</p>
+				</c:if>
+				<br /> <br />
+			</form>
+		</c:forEach>
+		<c:forEach items="${requestScope.itemsSeries}" var="item">
+			<form id="tituloForm" action="TitleController" method="post">
+				<input value='${item.id}' name='titleQuery' type='hidden' /> 
+				<input value='serie' name='mediaQuery' type='hidden' /> 
+				<button title="${item.title}" type="submit" id='titleBtn'>
+					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${item.profilePath}' /><br />
+					<p>${item.title}</p>
+				</button>
+				<br />
+				<c:if test="${item.released != ''}">
+					<p id="id_sub">${item.released}</p>
+				</c:if>
+				<c:if test="${item.released == ''}">
 					<p id="id_sub">(N/A)</p>
 				</c:if>
 				<br /> <br />
@@ -40,8 +56,11 @@
 			<input type="hidden" value="${requestScope.idLista}" name="listBtn">
 			<select id="id_lista" name="itemDelete" required>
 				<option label="Eliminar de la lista"/>
-					<c:forEach items="${requestScope.items}" var="item">
-							<option value="${item.id}" label="${item.titulo}"/>
+					<c:forEach items="${requestScope.itemsMovies}" var="item">
+							<option value="${item.id}" label="${item.title}"/>
+					</c:forEach>
+					<c:forEach items="${requestScope.itemsSeries}" var="item">
+							<option value="${item.id}" label="${item.title}"/>
 					</c:forEach>
 			</select>
 			<button id="id_anyadir" type="submit" name="añadir">Eliminar</button>

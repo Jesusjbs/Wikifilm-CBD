@@ -1,12 +1,15 @@
 package cbd.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Lista implements Serializable {
@@ -17,12 +20,20 @@ public class Lista implements Serializable {
 	Long id;
 
 	private String title;
-	
+
+	private String description;
+
+	private Boolean privateList;
+
 	@ManyToOne(optional = true)
-	private Set<Movie> peliculas;
-	
+	private Set<Movie> movies;
+
 	@ManyToOne(optional = true)
 	private Set<Serie> series;
+
+	@OneToOne
+	@JoinColumn(name = "username")
+	private User user;
 
 	public Lista() {
 	}
@@ -47,12 +58,46 @@ public class Lista implements Serializable {
 		this.title = title;
 	}
 
-	public Set<Movie> getPeliculas() {
-		return peliculas;
+	public User getUser() {
+		return user;
 	}
 
-	public void setPeliculas(Set<Movie> peliculas) {
-		this.peliculas = peliculas;
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Boolean getPrivateList() {
+		return privateList;
+	}
+
+	public void setPrivateList(Boolean privateList) {
+		this.privateList = privateList;
+	}
+
+	public Set<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(Set<Movie> movies) {
+		this.movies = movies;
+	}
+
+	public void addMovies(Movie mov) {
+		if (movies == null)
+			movies = new HashSet<Movie>();
+		movies.add(mov);
+	}
+
+	public void deleteMovie(Movie mov) {
+		movies.remove(mov);
 	}
 
 	public Set<Serie> getSeries() {
@@ -61,6 +106,16 @@ public class Lista implements Serializable {
 
 	public void setSeries(Set<Serie> series) {
 		this.series = series;
+	}
+
+	public void addSeries(Serie ser) {
+		if (series == null)
+			series = new HashSet<Serie>();
+		series.add(ser);
+	}
+
+	public void deleteSerie(Serie ser) {
+		series.remove(ser);
 	}
 
 }
