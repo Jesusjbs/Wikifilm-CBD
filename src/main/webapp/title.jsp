@@ -10,16 +10,15 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.html" />
+		<jsp:include page="header.jsp" />
 	</header>
 	<form id="id_formList" action="/ItemController" method="post">
 		<input type="hidden" value="${requestScope.media}" name="media">
-		<input type="hidden" value="${requestScope.type}" name="tipo">
 		<input type="hidden" value="${requestScope.id}" name="idItem">
 		<select id="id_lista" name="lista" required>
 			<option label="Añadir a mi lista" />
 			<c:forEach items="${requestScope.lista}" var="list">
-				<option value="${list.id}" label="${list.name}" />
+				<option value="${list.id}" label="${list.title}" />
 			</c:forEach>
 		</select>
 		<button id="id_anyadir" type="submit" name="añadir">Añadir</button>
@@ -39,7 +38,7 @@
 			<span>Duración:</span> ${requestScope.runtime}
 		</p>
 		<c:if
-			test="${requestScope.type == 'serie' || (requestScope.media == 'tv')}">
+			test="${requestScope.media == 'serie'}">
 			<p>
 				<span>Estado:</span> ${requestScope.estado}
 			</p>
@@ -63,11 +62,6 @@
 			src="https://www.youtube.com/embed/?autoplay=0&fs=1&iv_load_policy=3&showinfo=0"
 			frameborder="0" allowfullscreen></iframe>
 		<form id="id_comment" action="CommentController" method="post">
-			<%
-				session.setAttribute("tipoQuery", (String) request.getAttribute("type"));
-			session.setAttribute("mediaQuery", (String) request.getAttribute("media"));
-			session.setAttribute("titleQuery", (String) request.getAttribute("titleQuery"));
-			%>
 			<textarea id="id_areaText" rows=3 cols=70
 				placeholder="Escriba aquí su comentario" name="comment"></textarea>
 			<button id="id_enviarBtn" type="submit">

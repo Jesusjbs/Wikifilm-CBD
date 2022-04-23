@@ -25,12 +25,12 @@ public class ListController extends HttpServlet {
 		EntityManager em = emf.createEntityManager();
 
 		RequestDispatcher rd = null;
-		HttpSession misession = (HttpSession) request.getSession();
+		HttpSession sesion = (HttpSession) request.getSession();
 
-		if ((String) misession.getAttribute("atoken") == null || (String) misession.getAttribute("atoken") == "") {
-			rd = request.getRequestDispatcher("/AuthController");
+		if (sesion.getAttribute("aToken") == null) {
+			rd = request.getRequestDispatcher("/login.jsp");
 		} else {
-			String aId = (String) misession.getAttribute("accountId");
+			Long aId = (Long) sesion.getAttribute("aToken");
 			String titleList = request.getParameter("titleList");
 
 			ListRepository lr = new ListRepository();
@@ -39,7 +39,8 @@ public class ListController extends HttpServlet {
 			if (titleList == "" || titleList == null) {
 				rd = request.getRequestDispatcher("/list.jsp");
 			} else {
-				Lista lcResult = lr.createList((String) misession.getAttribute("atoken"), titleList, em);
+				em = emf.createEntityManager();
+				Lista lcResult = lr.createList((Long) sesion.getAttribute("aToken"), titleList, em);
 				request.setAttribute("mensaje",
 						"La lista " + titleList + " fue creada correctamente con id " + lcResult.getId());
 				rd = request.getRequestDispatcher("/createList.jsp");

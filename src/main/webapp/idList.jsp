@@ -11,14 +11,14 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.html" />  
+		<jsp:include page="header.jsp" />  
 	</header>
 	<h1>Mostrando la lista "${requestScope.nombreLista}" con ID ${requestScope.idLista}</h1>
 	<fieldset id="tmdb">
 		<c:forEach items="${requestScope.itemsMovies}" var="item">
 			<form id="tituloForm" action="TitleController" method="post">
 				<input value='${item.id}' name='titleQuery' type='hidden' /> 
-				<input value='serie' name='mediaQuery' type='hidden' /> 
+				<input value='movie' name='mediaQuery' type='hidden' /> 
 				<button title="${item.title}" type="submit" id='titleBtn'>
 					<img alt='poster.png' onerror="this.src='./img/Poster.png'" src='https://image.tmdb.org/t/p/w185${item.profilePath}' /><br />
 					<p>${item.title}</p>

@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.html" />  
+		<jsp:include page="header.jsp" />  
 	</header>
 
 	<h1>Mis Listas</h1>
@@ -48,7 +48,7 @@
 	</c:forEach>
 	
 	<div id="id_divAdd">
-		<a id="id_addBtn" href="https://wikifilm-cbd.appspot.com/createList.jsp">
+		<a id="id_addBtn" href="/createList.jsp">
 			<img style="width:50px;height:50px" src="./img/add_list.png" alt="Crear Lista"
 				title="Crear Lista" />
 		</a>

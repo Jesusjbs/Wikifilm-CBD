@@ -9,7 +9,7 @@
 <title>${requestScope.nombre}</title>
 </head>
 <body>
-	<header><jsp:include page="header.html" /></header>
+	<header><jsp:include page="header.jsp" /></header>
 	<div id="id_foto">
 	<img id="id_poster" alt='poster.png' onerror="this.src='./img/Poster.png'"
 		src='https://image.tmdb.org/t/p/w185${requestScope.poster}' />

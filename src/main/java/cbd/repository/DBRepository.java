@@ -1,5 +1,6 @@
 package cbd.repository;
 
+import java.security.SecureRandom;
 import java.time.LocalDate;
 import java.util.Arrays;
 
@@ -8,6 +9,7 @@ import javax.persistence.EntityManager;
 import cbd.model.Actor;
 import cbd.model.Movie;
 import cbd.model.Serie;
+import cbd.model.User;
 
 public class DBRepository {
 
@@ -46,7 +48,11 @@ public class DBRepository {
 			s1.setActors(Arrays.asList(a1,a2));
 			em.persist(s1);
 
+			// Populate Users
+			em.persist(new User("usuario1", "usuario1", true, SecureRandom.getInstance("SHA1PRNG").nextLong()));
 			em.getTransaction().commit();
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			if (em.getTransaction().isActive())
 				em.getTransaction().rollback();

@@ -29,7 +29,7 @@ public class ItemController extends HttpServlet {
 		String tipo = request.getParameter("media");
 		String idItem = request.getParameter("idItem");
 		String idLista = request.getParameter("lista");
-		String aToken = (String) misession.getAttribute("atoken");
+		Long aToken = (Long) misession.getAttribute("aToken");
 
 		ListRepository lr = new ListRepository();
 		if(tipo.contains("serie")) {

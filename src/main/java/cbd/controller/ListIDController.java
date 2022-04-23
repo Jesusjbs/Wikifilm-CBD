@@ -28,7 +28,7 @@ public class ListIDController extends HttpServlet {
 		EntityManager em = emf.createEntityManager();
 
 		RequestDispatcher rd = null;
-		HttpSession misession = (HttpSession) request.getSession();
+		HttpSession sesion = (HttpSession) request.getSession();
 
 		String idList = request.getParameter("editBtn");
 		String idListDelete = request.getParameter("deleteBtn");
@@ -38,7 +38,7 @@ public class ListIDController extends HttpServlet {
 		String tipoEdit = request.getParameter("tipoEdit");
 		String media = request.getParameter("media");
 		String descriptionEdit = request.getParameter("descriptionEdit");
-		String aToken = (String) misession.getAttribute("atoken");
+		Long aToken = (Long) sesion.getAttribute("aToken");
 		String idItemDelete = request.getParameter("itemDelete");
 
 		ListRepository lr = new ListRepository();
@@ -56,6 +56,7 @@ public class ListIDController extends HttpServlet {
 			rd = request.getRequestDispatcher("/ListController");
 		} else if (idItemDelete != null && idItemDelete != "") {
 			lr.deleteItem(aToken, Integer.valueOf(idSee), Integer.valueOf(idItemDelete), media, em);
+			em = emf.createEntityManager();
 			Pair<List<Movie>, List<Serie>> result = lr.getListById(aToken, Integer.valueOf(idSee), em);
 			request.setAttribute("idLista", idSee);
 			request.setAttribute("nombreLista", name);

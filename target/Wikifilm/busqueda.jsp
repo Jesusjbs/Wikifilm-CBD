@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.html" />  
+		<jsp:include page="header.jsp" />  
 	</header>
 	<fieldset id="tmdb">
 		<p>Se han encontrado ${requestScope.resultados} resultados de la búsqueda "<c:out value="${param.searchQuery}" />":</p>

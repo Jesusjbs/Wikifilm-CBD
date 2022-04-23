@@ -1,4 +1,3 @@
-cbd\repository\SearchRepository$Pair.class
 cbd\controller\DBController.class
 cbd\repository\UserRepository.class
 cbd\controller\ListController.class
@@ -9,6 +8,7 @@ cbd\controller\CommentController.class
 cbd\repository\TitleRepository.class
 cbd\controller\ItemController.class
 cbd\model\Serie.class
+cbd\model\Pair.class
 cbd\repository\ActorRepository.class
 cbd\model\Lista.class
 cbd\controller\UserController.class

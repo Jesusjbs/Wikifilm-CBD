@@ -30,16 +30,16 @@ public class SearchController extends HttpServlet {
 		EntityManager em = emf.createEntityManager();
 
 		String query = request.getParameter("searchQuery");
-		String type = request.getParameter("searchType");
+		String media = request.getParameter("mediaQuery");
 
 		RequestDispatcher rd = request.getRequestDispatcher("/busqueda.jsp");
 
 		SearchRepository resource = new SearchRepository();
 		List<Movie> moviesResults = new ArrayList<>();
 		List<Serie> seriesResults = new ArrayList<>();
-		if (type.equals("movie")) {
+		if (media.equals("movie")) {
 			moviesResults = resource.getMovies(query, em);
-		} else if (type.equals("serie")) {
+		} else if (media.equals("serie")) {
 			seriesResults = resource.getSeries(query, em);
 		} else {
 			Pair<List<Movie>, List<Serie>> aux = resource.getTitles(query, em);
@@ -51,17 +51,14 @@ public class SearchController extends HttpServlet {
 			request.setAttribute("movies", moviesResults);
 			request.setAttribute("series", seriesResults);
 			request.setAttribute("resultados", moviesResults.size() + seriesResults.size());
-			request.setAttribute("tipo", type);
 			request.setAttribute("busqueda", query);
 		} else if (!moviesResults.isEmpty() && seriesResults.isEmpty()) {
 			request.setAttribute("movies", moviesResults);
 			request.setAttribute("resultados", moviesResults.size());
-			request.setAttribute("tipo", type);
 			request.setAttribute("busqueda", query);
 		} else {
 			request.setAttribute("series", seriesResults);
 			request.setAttribute("resultados", seriesResults.size());
-			request.setAttribute("tipo", type);
 			request.setAttribute("busqueda", query);
 		}
 		rd.forward(request, response);

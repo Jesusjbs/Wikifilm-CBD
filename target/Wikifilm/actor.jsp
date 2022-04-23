@@ -9,7 +9,7 @@
 <title>${requestScope.nombre}</title>
 </head>
 <body>
-	<header><jsp:include page="header.html" /></header>
+	<header><jsp:include page="header.jsp" /></header>
 	<div id="id_foto">
 	<img id="id_poster" alt='poster.png' onerror="this.src='./img/Poster.png'"
 		src='https://image.tmdb.org/t/p/w185${requestScope.poster}' />
@@ -19,7 +19,12 @@
 		<p><span>Fecha de Nacimiento:</span> ${requestScope.nacimiento}
 			(${requestScope.edad} años)</p>
 		<p><span>Lugar de Nacimiento:</span> ${requestScope.lugar}</p>
-		<p><span>Fecha de Defunción:</span> ${requestScope.muerte}</p>
+		<c:if test="${requestScope.muerte != null}">
+			<p><span>Fecha de Defunción:</span> ${requestScope.muerte}</p>
+		</c:if>
+		<c:if test="${requestScope.muerte == null}">
+			<p><span>Fecha de Defunción:</span> N/A</p>
+		</c:if>
 		<p><span>Género:</span> ${requestScope.genero}</p>
 		<c:if test="${requestScope.biografia != ''}">
 			<p><span>Biografía:</span> ${requestScope.biografia}</p>

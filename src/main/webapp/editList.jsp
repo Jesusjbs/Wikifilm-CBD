@@ -11,7 +11,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="header.html" />
+		<jsp:include page="header.jsp" />
 	</header>
 	<h1>Editando lista con ID ${requestScope.idLista}</h1>
 	<form id="id_formEdit" action="ListIDController" method="post">

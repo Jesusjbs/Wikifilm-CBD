@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import cbd.repository.DBRepository;
 
@@ -18,12 +19,17 @@ public class DBController extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
 		EntityManager em = emf.createEntityManager();
-		
+
+		HttpSession sesion = (HttpSession) req.getSession();
 		RequestDispatcher rd = req.getRequestDispatcher("/index.jsp");
 
+		if (sesion.getAttribute("aToken") != null) {
+			sesion.removeAttribute("aToken");
+			sesion.removeAttribute("username");
+		}
+			
 		DBRepository.populateDB(em);
-		
-		
+
 		rd.forward(req, resp);
 
 	}

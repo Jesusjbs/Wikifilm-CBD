@@ -26,24 +26,16 @@ public class TitleController extends HttpServlet {
 			throws ServletException, IOException {
 
 		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = null;
 
 		String id = request.getParameter("titleQuery");
 		String media = request.getParameter("mediaQuery");
-		String tipo = request.getParameter("tipoQuery");
 		String mensaje = request.getParameter("message");
 		RequestDispatcher rd = null;
 
-		if (id == null) { // Si no se ha accedido desde búsqueda...
-			id = (String) request.getSession().getAttribute("titleQuery");
-			media = (String) request.getSession().getAttribute("mediaQuery");
-			tipo = (String) request.getSession().getAttribute("tipoQuery");
-		}
-
-		String aToken = (String) request.getSession().getAttribute("atoken");
-		if (aToken != "" && aToken != null) {
-
-
+		Long aToken = (Long) request.getSession().getAttribute("aToken");
+		if (aToken != null) {
+			em = emf.createEntityManager();
 			ListRepository lr = new ListRepository();
 			List<Lista> lResult = lr.getLists(aToken, em);
 
@@ -58,25 +50,27 @@ public class TitleController extends HttpServlet {
 		List<String> posterActores = new ArrayList<>();
 		List<String> nombreActores = new ArrayList<>();
 
-		if (media.equals("movie") || tipo.equals("movie")) {
+		if (media.equals("movie")) {
+			em = emf.createEntityManager();
 			mvResult = tmdb.getMovie(id, em);
 			if (mvResult.getActors() != null) {
-				mvResult.getActors().subList(0, 8).forEach(x -> idActores.add(x.getId()));				
-				mvResult.getActors().subList(0, 8).forEach(x -> posterActores.add(x.getProfilePath()));
-				mvResult.getActors().subList(0, 8).forEach(x -> nombreActores.add(x.getName()));
+				mvResult.getActors().forEach(x -> idActores.add(x.getId()));
+				mvResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
+				mvResult.getActors().forEach(x -> nombreActores.add(x.getName()));
 			}
 		} else {
+			em = emf.createEntityManager();
 			sResult = tmdb.getSerie(id, em);
 			if (sResult.getActors() != null) {
-				sResult.getActors().subList(0, 8).forEach(x -> idActores.add(x.getId()));				
-				sResult.getActors().subList(0, 8).forEach(x -> posterActores.add(x.getProfilePath()));
-				sResult.getActors().subList(0, 8).forEach(x -> nombreActores.add(x.getName()));
+				sResult.getActors().forEach(x -> idActores.add(x.getId()));
+				sResult.getActors().forEach(x -> posterActores.add(x.getProfilePath()));
+				sResult.getActors().forEach(x -> nombreActores.add(x.getName()));
 			}
 		}
 
 		if ((mvResult != null || sResult != null)) {
 			rd = request.getRequestDispatcher("/title.jsp");
-			if (media.equals("movie") || tipo.equals("movie")) {
+			if (media.equals("movie")) {
 				request.setAttribute("title", mvResult.getTitle());
 				request.setAttribute("released", mvResult.getReleased());
 				request.setAttribute("runtime", mvResult.getRuntime());
@@ -101,7 +95,6 @@ public class TitleController extends HttpServlet {
 			request.setAttribute("posterActores", posterActores);
 			request.setAttribute("nombreActores", nombreActores);
 			request.setAttribute("tamLista", posterActores.size());
-			request.setAttribute("type", tipo);
 			request.setAttribute("media", media);
 			request.setAttribute("message", mensaje);
 		} else {
