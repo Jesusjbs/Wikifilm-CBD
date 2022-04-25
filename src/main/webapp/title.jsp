@@ -91,7 +91,7 @@
 			</form>
 		</c:if>
 	</div>
-	<p>${requestScope.message}</p>
+	<p style="text-align:center;">${requestScope.message}</p>
 
 	<c:if test="${requestScope.tamLista != 0}">
 		<h1>Actores Destacados</h1>

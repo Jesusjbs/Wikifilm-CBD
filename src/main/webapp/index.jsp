@@ -24,23 +24,22 @@
 							<i class="fa fa-caret-down"></i>
 						</p>
 						<div class="dropdown-content">
+							<form id="listForm" action="ListController" method="post">
+								<button style="cursor: pointer; margin-top: 0.5rem;margin-bottom: 0.5rem;" title="Ver mis listas"
+									type="submit" id='listBtn'>Mis Listas</button>
+							</form>
 							<form id="logoutForm" action="UserController" method="post">
 								<button
-									style="border: none; padding: 0; background: none; cursor: pointer;  margin-bottom: 1rem;"
+									style="border: none; padding: 0; background: none; cursor: pointer;"
 									type="submit" value="Cerrar Sesión">Cerrar Sesión</button>
 								<input type="hidden" name="logout" value="logout" checked />
-							</form>
-							<form id="listForm" action="ListController" method="post">
-								<button style="cursor: pointer;" title="Ver mis listas"
-									type="submit" id='listBtn'>Mis Listas</button>
 							</form>
 						</div></li>
 				</ul>
 			</c:if>
 			<c:if test="${sessionScope.username == null}">
 				<a href="/login.jsp">
-					<button class="loginButton" type="submit">Iniciar
-						Sesión</button>
+					<button class="loginButton" type="submit">Iniciar Sesión</button>
 				</a>
 			</c:if>
 		</div>

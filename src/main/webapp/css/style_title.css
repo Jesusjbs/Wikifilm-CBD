@@ -3,12 +3,6 @@ body {
 	font-family: sans-serif;
 }
 
-.similarMovies {
-	border: 2px solid;
-	width: 100%;
-	overflow-x: scroll;
-}
-
 .other td {
 	text-align: center;
 	max-width: 200px;
@@ -85,46 +79,6 @@ p {
 	background: none;
 	cursor: pointer;
 	border: none;
-}
-
-#id_valoracion {
-	margin-left: 2%;
-	background: none;
-	font-size: x-large;
-	border: 1px solid;
-	width: 4%;
-	height: 50px;
-	text-align: center;
-	position: relative;
-}
-
-#id_numVotos {
-	border: 1px solid #000;
-	background: white;
-	color: #0095da;
-	width: 4%;
-	height: 50px;
-	font-size: small;
-	text-align: center;
-	margin-left: 9%;
-	margin-top: -3.65%;
-}
-
-#id_numVotos p {
-	margin: 0;
-	margin-top: 10%;
-}
-
-#id_valoracion p {
-	margin-top: 17%;
-	font-weight: bold;
-}
-
-#id_votos {
-	position: relative;
-	margin-top: 1%;
-	margin-bottom: 3%;
-	margin-left: 1.5%;
 }
 
 #id_youtube {
