@@ -8,7 +8,12 @@
 	<a href="index.jsp"><img id="id_logo" title="Wikifilm"
 		alt="Logo.png" src="./img/Logo.png" /></a>
 	<c:if test="${sessionScope.username != null}">
-		<p>${sessionScope.username}a</p>
+		<p>${sessionScope.username}</p>
+		<form id="logoutForm" action="UserController" method="post">
+			<button  type="submit" value="Cerrar Sesión">Cerrar
+				Sesión</button>
+			<input type="hidden" name="logout" value="logout" checked />
+		</form>
 	</c:if>
 	<c:if test="${sessionScope.username == null}">
 		<a href="/login.jsp">
@@ -18,13 +23,12 @@
 	<form id="searchForm" action="SearchController" method="post">
 		<div id="id_divSearch">
 			<input id="id_search" size=50 type="text" name="searchQuery"
-				placeholder="Buscar" required /> <input type="hidden"
-				name="pageQuery" value="1" />
+				placeholder="Buscar" required />
 			<button id="id_bt" type="submit" value="">
 				<img id="id_imgSearch" src="./img/searchButton.png" />
 			</button>
 		</div>
-		<input type="hidden" id="id_3" name="searchType" value="" checked />
+		<input type="hidden" id="id_3" name="mediaQuery" value="" checked />
 	</form>
 	<c:if test="${sessionScope.username != null}">
 		<form id="listForm" action="ListController" method="post">

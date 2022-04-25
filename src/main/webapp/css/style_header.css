@@ -44,3 +44,46 @@
 	height: 180px;
 	position: relative;
 }
+
+#id_sesion {
+	display: flex;
+	margin: 2rem;
+	float: right;
+}
+
+#id_sesion p {
+	margin-right: 1rem;
+	text-transform: uppercase;
+}
+
+#logoutForm {
+	margin-top: 1rem;
+}
+
+#loginForm {
+	margin-top: 1rem;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	border: 1px solid;
+	position: absolute;
+	border-radius: 10px;
+	padding: 0rem 0.5rem 1rem 0.5rem;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.loginButton {
+	padding: 4px;
+	border-radius: 3px;
+	border: 1px solid;
+	cursor: pointer;
+}

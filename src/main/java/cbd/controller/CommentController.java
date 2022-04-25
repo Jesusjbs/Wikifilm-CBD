@@ -1,45 +1,68 @@
 package cbd.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import cbd.model.Comment;
+import cbd.model.User;
 import cbd.repository.CommentRepository;
+import cbd.repository.UserRepository;
 
 public class CommentController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
-		String idtmDb = (String) req.getSession().getAttribute("titleQuery");
-		String titleTrailer = (String) req.getSession().getAttribute("trailerQuery");
-		String yearTrailer = (String) req.getSession().getAttribute("yearTrailerQuery");
-		String media = (String) req.getSession().getAttribute("mediaQuery");
-		String tipo = (String) req.getSession().getAttribute("tipoQuery");
-		String id = (String) req.getSession().getAttribute("idvideo");
-		String comment = (String) req.getParameter("comment");
+		EntityManagerFactory emf = (EntityManagerFactory) getServletContext().getAttribute("emf");
+		EntityManager em = emf.createEntityManager();
 
-		req.setAttribute("titleQuery", idtmDb);
-		req.setAttribute("trailerQuery", titleTrailer);
-		req.setAttribute("yearTrailerQuery", yearTrailer);
-		req.setAttribute("tipoQuery", tipo);
-		req.setAttribute("mediaQuery", media);
-		req.setAttribute("idvideo", id);
+		String id = req.getParameter("idItem");
+		String media = req.getParameter("media");
+		String comment = req.getParameter("comment");
+		String rating = req.getParameter("rating");
+
+		Long token = (Long) req.getSession().getAttribute("aToken");
 
 		if (id != null && !"".equals(id) && comment != null && !"".equals(comment)) {
-			CommentRepository cResource = new CommentRepository();
-			Comment cm = new Comment();
-			cResource.insertComment(cm);
+			// Get user
+			UserRepository uResource = new UserRepository();
+			User author = uResource.getUserByToken(token, em);
 
-			req.setAttribute("message", "Se ha publicado correctamente");
-			req.getRequestDispatcher("/TitleController").forward(req, resp);
+			// Create comment
+			em = emf.createEntityManager();
+			CommentRepository cResource = new CommentRepository();
+			try {
+				Comment cm = new Comment();
+				cm.setRating(Integer.valueOf(rating));
+				cm.setContent(comment);
+				cm.setDate(LocalDate.now());
+				cm.setUser(author);
+				cResource.insertComment(cm, id, media, em);
+
+				req.setAttribute("titleQuery", id);
+				req.setAttribute("mediaQuery", media);
+				req.setAttribute("message", "Se ha publicado correctamente");
+				req.getRequestDispatcher("/TitleController").forward(req, resp);
+			} catch (Exception e) {
+				e.printStackTrace();
+				req.setAttribute("message", "Debe escribir un comentario válido.");
+				req.setAttribute("titleQuery", id);
+				req.setAttribute("mediaQuery", media);
+				req.setAttribute("rating", rating);
+				req.setAttribute("content", comment);
+				req.getRequestDispatcher("/TitleController").forward(req, resp);
+			}
 		} else {
 			req.setAttribute("message", "Debe escribir un comentario válido.");
-			req.setAttribute("content", comment);
+			req.setAttribute("titleQuery", id);
+			req.setAttribute("mediaQuery", media);
 			req.getRequestDispatcher("/TitleController").forward(req, resp);
 		}
 

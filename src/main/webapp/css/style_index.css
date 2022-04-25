@@ -14,7 +14,7 @@
 
 body {
 	background-color: #0095da;
-     font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 #id_divMain {
@@ -46,14 +46,15 @@ body {
 
 #id_tipos {
 	width: 40%;
-	margin-left: 42%;
-	vertical-align: center;
+	text-align: center;
+	margin: auto;
+	margin: auto;
 }
 
 #id_divSearchBtn {
 	width: 15%;
-	margin-left: 48%;
-	vertical-align: center;
+	text-align: center;
+	margin: auto;
 }
 
 #id_searchBtn {
@@ -121,4 +122,55 @@ body {
 #id_footer a {
 	text-decoration: none;
 	color: white;
+}
+
+#id_sesion {
+	margin: 2rem;
+	display: flex;
+	float: right;
+}
+
+#listBtn {
+	background: none;
+	border: none;
+	float: right;
+	margin-right: 5%;
+	margin-top: -2%;
+}
+
+#id_sesion p {
+	margin-right: 1rem;
+	text-transform: uppercase;
+}
+
+#logoutForm {
+	margin-top: 1rem;
+}
+
+#loginForm {
+	margin-top: 1rem;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown-content {
+	display: none;
+	border: 1px solid;
+	position: absolute;
+	border-radius: 10px;
+	padding: 0rem 0.5rem 1rem 0.5rem;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.loginButton {
+	padding: 4px;
+	border-radius: 3px;
+	border: 1px solid;
+	cursor: pointer;
 }

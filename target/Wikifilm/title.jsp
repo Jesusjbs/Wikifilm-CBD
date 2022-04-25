@@ -12,19 +12,19 @@
 	<header>
 		<jsp:include page="header.jsp" />
 	</header>
-	<form id="id_formList" action="/ItemController" method="post">
-		<input type="hidden" value="${requestScope.media}" name="media">
-		<input type="hidden" value="${requestScope.type}" name="tipo">
-		<input type="hidden" value="${requestScope.id}" name="idItem">
-		<select id="id_lista" name="lista" required>
-			<option label="Añadir a mi lista" />
-			<c:forEach items="${requestScope.lista}" var="list">
-				<option value="${list.id}" label="${list.name}" />
-			</c:forEach>
-		</select>
-		<button id="id_anyadir" type="submit" name="añadir">Añadir</button>
-	</form>
-
+	<c:if test="${sessionScope.username != null}">
+		<form id="id_formList" action="/ItemController" method="post">
+			<input type="hidden" value="${requestScope.media}" name="media">
+			<input type="hidden" value="${requestScope.id}" name="idItem">
+			<select id="id_lista" name="lista" required>
+				<option label="Añadir a mi lista" />
+				<c:forEach items="${requestScope.lista}" var="list">
+					<option value="${list.id}" label="${list.title}" />
+				</c:forEach>
+			</select>
+			<button id="id_anyadir" type="submit" name="añadir">Añadir</button>
+		</form>
+	</c:if>
 	<div id="id_foto">
 		<img id="id_poster" alt='poster.png'
 			onerror="this.src='./img/Poster.png'"
@@ -38,8 +38,7 @@
 		<p>
 			<span>Duración:</span> ${requestScope.runtime}
 		</p>
-		<c:if
-			test="${requestScope.type == 'serie' || (requestScope.media == 'tv')}">
+		<c:if test="${requestScope.media == 'serie'}">
 			<p>
 				<span>Estado:</span> ${requestScope.estado}
 			</p>
@@ -62,20 +61,34 @@
 		<iframe id="id_ytplayer" width="640" height="360"
 			src="https://www.youtube.com/embed/?autoplay=0&fs=1&iv_load_policy=3&showinfo=0"
 			frameborder="0" allowfullscreen></iframe>
-		<form id="id_comment" action="CommentController" method="post">
-			<%
-				session.setAttribute("tipoQuery", (String) request.getAttribute("type"));
-			session.setAttribute("mediaQuery", (String) request.getAttribute("media"));
-			session.setAttribute("titleQuery", (String) request.getAttribute("titleQuery"));
-			%>
-			<textarea id="id_areaText" rows=3 cols=70
-				placeholder="Escriba aquí su comentario" name="comment"></textarea>
-			<button id="id_enviarBtn" type="submit">
-				<img id="id_enviarImg" title="Enviar comentario"
-					alt="Enviar comentario" src="./img/send.png">
-			</button>
-
-		</form>
+		<c:if test="${sessionScope.username != null}">
+			<form id="id_comment" action="CommentController" method="post">
+				<input type="hidden" value="${requestScope.id}" name="idItem">
+				<div id="id_rating">
+					<p class="clasificacion">
+						<input id="radio1" type="radio" name="valoracion" value="5">
+						<label class="labelComentario" for="radio1">★</label> <input
+							id="radio2" type="radio" name="valoracion" value="4"> <label
+							class="labelComentario" for="radio2">★</label> <input id="radio3"
+							type="radio" name="valoracion" value="3"> <label
+							class="labelComentario" for="radio3">★</label> <input id="radio4"
+							type="radio" name="valoracion" value="2"> <label
+							class="labelComentario" for="radio4">★</label> <input id="radio5"
+							type="radio" name="valoracion" value="1"> <label
+							class="labelComentario" for="radio5">★</label>
+					</p>
+				</div>
+				</br>
+				<div id="id_comment">
+					<textarea id="id_areaText" rows=3 cols=70
+						placeholder="Escriba aquí su comentario" name="comment"></textarea>
+					<button id="id_enviarBtn" type="submit">
+						<img id="id_enviarImg" title="Enviar comentario"
+							alt="Enviar comentario" src="./img/send.png">
+					</button>
+				</div>
+			</form>
+		</c:if>
 	</div>
 	<p>${requestScope.message}</p>
 
@@ -100,6 +113,30 @@
 				</tr>
 			</table>
 		</div>
+	</c:if>
+	<c:if test="${requestScope.tamListaComment != 0}">
+		<h1>Comentarios</h1>
+		<div class="posterActor">
+			<table>
+				<c:forEach var="i" begin="0" end="${requestScope.tamLista -1}">
+					<tr>
+						<td>
+							<p>${requestScope.comentarios.get(i).user.username}</p>
+						</td>
+						<td>
+							<p>${requestScope.comentarios.get(i).content}</p>
+						</td>
+						<td>
+							<p>${requestScope.comentarios.get(i).rating}</p>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</c:if>
+	<c:if test="${requestScope.tamListaComment == 0}">
+		<h1>Comentarios</h1>
+		<p>Parece que aún no hay comentarios. ¡Sé el primero en comentar!</p>
 	</c:if>
 </body>
 </html>

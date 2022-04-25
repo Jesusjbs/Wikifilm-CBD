@@ -7,6 +7,8 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/style_index.css">
+<link rel="stylesheet"
+	href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 <title>Wikifilm</title>
 <link rel="shortcut icon" href="./img/Icono.png">
 </head>
@@ -15,6 +17,33 @@
 	<header>
 		<a href="index.jsp"><img title="Wikifilm" id="id_logo"
 			alt="Logo.png" src="./img/Logo.png" /></a>
+		<div id="id_sesion">
+			<c:if test="${sessionScope.username != null}">
+				<ul class="w3-navbar w3-card-2 w3-light-grey">
+					<li class="dropdown"><p style="cursor: pointer;">${sessionScope.username}
+							<i class="fa fa-caret-down"></i>
+						</p>
+						<div class="dropdown-content">
+							<form id="logoutForm" action="UserController" method="post">
+								<button
+									style="border: none; padding: 0; background: none; cursor: pointer;  margin-bottom: 1rem;"
+									type="submit" value="Cerrar Sesión">Cerrar Sesión</button>
+								<input type="hidden" name="logout" value="logout" checked />
+							</form>
+							<form id="listForm" action="ListController" method="post">
+								<button style="cursor: pointer;" title="Ver mis listas"
+									type="submit" id='listBtn'>Mis Listas</button>
+							</form>
+						</div></li>
+				</ul>
+			</c:if>
+			<c:if test="${sessionScope.username == null}">
+				<a href="/login.jsp">
+					<button class="loginButton" type="submit">Iniciar
+						Sesión</button>
+				</a>
+			</c:if>
+		</div>
 	</header>
 	<div id="id_divMain">
 		<form id="searchForm" action="SearchController" method="post">

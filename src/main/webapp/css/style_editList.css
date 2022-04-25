@@ -16,9 +16,7 @@ h1 {
 }
 
 #label {
-	position: absolute;
 	margin-left: -6%;
-	margin-top: 1%;
 }
 
 #id_formEdit {
@@ -39,8 +37,8 @@ h1 {
 }
 
 #id_Btn {
-	padding: 2px;
-	border-radius: 3px;
-	border: 1px solid;
-	cursor: pointer;
+    padding: 4px;
+    border-radius: 3px;
+    border: 1px solid;
+    cursor: pointer;
 }

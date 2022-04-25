@@ -1,6 +1,6 @@
 body {
 	background-color: #0095da;
-     font-family: sans-serif;
+	font-family: sans-serif;
 }
 
 #id_div {
@@ -12,10 +12,16 @@ body {
 
 #id_title {
 	border-radius: 4px;
+	margin-bottom: 1rem;
+}
+
+#listForm {
+	text-align: center;
+	margin: auto;
 }
 
 #id_Btn {
-	padding: 2px;
+	padding: 4px;
 	border-radius: 3px;
 	border: 1px solid;
 	cursor: pointer;
@@ -23,5 +29,6 @@ body {
 
 #id_divMensaje {
 	margin: auto;
-	width: 20%;
+	text-align: center;
+	margin-top: 5rem;
 }

@@ -20,18 +20,17 @@
 		<form id="searchForm" action="SearchController" method="post">
 			<div id="id_divSearch">
 				<input id="id_search" size=50 type="text" name="searchQuery"
-					placeholder="Busca tu película/serie" required /> <input
-					type="hidden" name="pageQuery" value="1" />
+					placeholder="Busca tu película/serie" required />
 				<button id="id_bt" type="submit" value="">
 					<img id="id_imgSearch" src="./img/searchButton.png" />
 				</button>
 			</div>
 			<br />
 			<div id="id_tipos">
-				<input type="radio" id="id_3" name="searchType" value="" checked />
+				<input type="radio" id="id_3" name="mediaQuery" value="" checked />
 				<label for="id_3">Todo</label> <input type="radio" id="id_1"
-					name="searchType" value="movie" /> <label for="id_1">Películas</label>
-				<input type="radio" id="id_2" name="searchType" value="serie" /> <label
+					name="mediaQuery" value="movie" /> <label for="id_1">Películas</label>
+				<input type="radio" id="id_2" name="mediaQuery" value="serie" /> <label
 					for="id_2">Series</label>
 			</div>
 			<br />

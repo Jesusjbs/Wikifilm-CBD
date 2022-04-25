@@ -34,7 +34,6 @@ public class ListRepository {
 
 		try {
 			em.getTransaction().begin();
-			System.out.println(aToken);
 			result.setUser(em.createQuery("SELECT u FROM User u WHERE u.token =:aToken", User.class)
 					.setParameter("aToken", aToken).getSingleResult());
 			em.persist(result);
@@ -50,7 +49,7 @@ public class ListRepository {
 
 	public void deleteList(Long aToken, Integer listId, EntityManager em) {
 		em.getTransaction().begin();
-		em.createQuery("DELETE l FROM Lista l WHERE l.user.token =: aToken and l.id = :listId")
+		em.createQuery("DELETE FROM Lista l WHERE l.user.token =: aToken and l.id = :listId")
 				.setParameter("aToken", aToken).setParameter("listId", listId).executeUpdate();
 		em.getTransaction().commit();
 	}

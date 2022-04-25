@@ -10,25 +10,40 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 
 @Entity
 public class Serie extends Poster implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
 	@Unique
 	private String title;
+	
+	@Past
 	private LocalDate released;
+	
 	private String runtime;
+	
 	private String plot;
+	
+	@Min(1)
 	private Integer totalSeasons;
+	
 	private String genre;
+	
 	private String channel;
+
+	@NotNull
 	private Boolean terminated;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

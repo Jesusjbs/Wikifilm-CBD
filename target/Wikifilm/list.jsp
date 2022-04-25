@@ -19,8 +19,8 @@
 	<c:forEach items="${requestScope.lista}" var="list">
 		<div id="id_div">
 			<form id="id_formDatos" action="ListIDController" method="post">	
-				<input type="hidden" name="nameEdit" value="${list.name}"/>
-				<button name="listBtn" id="id_listBtn" value="${list.id}" type="submit">${list.name}
+				<input type="hidden" name="nameEdit" value="${list.title}"/>
+				<button name="listBtn" id="id_listBtn" value="${list.id}" type="submit">${list.title}
 					<c:if test="${list.description != ''}">
 						<p>${list.description}</p>
 					</c:if>
@@ -30,7 +30,7 @@
 				</button>
 			</form>
 			<form id="id_formE" action="ListIDController" method="post">
-			<input type="hidden" name="nameEdit" value="${list.name}"/>
+			<input type="hidden" name="nameEdit" value="${list.title}"/>
 			<input type="hidden" name="descriptionEdit" value="${list.description}"/>
 
 				<button name="editBtn" id="id_editBtn" value="${list.id}" type="submit">

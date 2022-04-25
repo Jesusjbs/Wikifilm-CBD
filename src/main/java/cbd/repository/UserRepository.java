@@ -22,5 +22,22 @@ public class UserRepository {
 		}
 		return result;
 	}
+	
+	public User getUserByToken(Long token, EntityManager em) {
+		User result = new User();
+		try {
+			em.getTransaction().begin();
+			result = em.createQuery("SELECT u FROM User u WHERE u.token =:token", User.class)
+					.setParameter("token", token).getSingleResult();
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = null;
+		} finally {
+			if (em.getTransaction().isActive())
+				em.getTransaction().rollback();
+			em.close();
+		}
+		return result;
+	}
 
 }

@@ -1,25 +1,40 @@
 package cbd.model;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Comment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	private String author;
+	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@NotNull
+	@Size(min=3,max=100)
 	private String content;
-	private Double rating;
-	private Boolean recommended;
-	private String date;
+
+	@Min(0)
+	@Max(5)
+	private Integer rating;
+
+	private LocalDate date;
 
 	@ManyToOne
 	@JoinColumn(name = "movie_id")
@@ -28,15 +43,14 @@ public class Comment implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "serie_id")
 	private Serie serie;
-	
+
 	public Comment() {
 	}
 
-	public Comment(String author, String content, Double rating, Boolean recommended, String date) {
-		this.author = author;
+	public Comment(User user, String content, Integer rating, LocalDate date) {
+		this.user = user;
 		this.content = content;
 		this.rating = rating;
-		this.recommended = recommended;
 		this.date = date;
 	}
 
@@ -48,12 +62,12 @@ public class Comment implements Serializable {
 		this.id = id;
 	}
 
-	public String getAuthor() {
-		return author;
+	public User getUser() {
+		return user;
 	}
 
-	public void setAuthor(String author) {
-		this.author = author;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getContent() {
@@ -64,27 +78,35 @@ public class Comment implements Serializable {
 		this.content = content;
 	}
 
-	public Double getRating() {
+	public Integer getRating() {
 		return rating;
 	}
 
-	public void setRating(Double rating) {
+	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
 
-	public Boolean getRecommended() {
-		return recommended;
+	public Movie getMovie() {
+		return movie;
 	}
 
-	public void setRecommended(Boolean recommended) {
-		this.recommended = recommended;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
-	public String getDate() {
+	public Serie getSerie() {
+		return serie;
+	}
+
+	public void setSerie(Serie serie) {
+		this.serie = serie;
+	}
+
+	public LocalDate getDate() {
 		return date;
 	}
 
-	public void setDate(String string) {
+	public void setDate(LocalDate string) {
 		this.date = string;
 	}
 
