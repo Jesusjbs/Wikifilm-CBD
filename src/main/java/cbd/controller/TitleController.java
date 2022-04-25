@@ -88,6 +88,7 @@ public class TitleController extends HttpServlet {
 				request.setAttribute("genres", mvResult.getGenre());
 				request.setAttribute("plot", mvResult.getPlot());
 				request.setAttribute("poster", mvResult.getProfilePath());
+				request.setAttribute("video", mvResult.getVideoPath());
 				request.setAttribute("id", mvResult.getId());
 			} else {
 				request.setAttribute("title", sResult.getTitle());
@@ -96,6 +97,7 @@ public class TitleController extends HttpServlet {
 				request.setAttribute("genres", sResult.getGenre());
 				request.setAttribute("plot", sResult.getPlot());
 				request.setAttribute("poster", sResult.getProfilePath());
+				request.setAttribute("video", sResult.getVideoPath());
 				request.setAttribute("totalSeasons", sResult.getTotalSeasons());
 				request.setAttribute("estado", sResult.getTerminated());
 				request.setAttribute("id", sResult.getId());

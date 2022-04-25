@@ -59,7 +59,7 @@
 	</div>
 	<div id="id_youtube">
 		<iframe id="id_ytplayer" width="640" height="360"
-			src="https://www.youtube.com/embed/?autoplay=0&fs=1&iv_load_policy=3&showinfo=0"
+			src="https://www.youtube.com/embed/${requestScope.video}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0"
 			frameborder="0" allowfullscreen></iframe>
 		<c:if test="${sessionScope.username != null}">
 			<form id="id_comment" action="CommentController" method="post">

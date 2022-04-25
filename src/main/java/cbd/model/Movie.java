@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 
 @Entity
-public class Movie extends Poster implements Serializable {
+public class Movie extends Path implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -46,13 +46,14 @@ public class Movie extends Poster implements Serializable {
 	public Movie() {
 	}
 
-	public Movie(String title, LocalDate released, String runtime, String plot, String genre, String poster) {
+	public Movie(String title, LocalDate released, String runtime, String plot, String genre, String poster,String video) {
 		this.title = title;
 		this.released = released;
 		this.runtime = runtime;
 		this.plot = plot;
 		this.genre = genre;
 		this.profilePath = poster;
+		this.videoPath = video;
 	}
 
 	public LocalDate getReleased() {

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class Poster implements Serializable {
+public class Path implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -16,6 +16,8 @@ public class Poster implements Serializable {
 	Long id;
 	
 	protected String profilePath;
+	
+	protected String videoPath;
 
 	public String getProfilePath() {
 		return profilePath;
@@ -24,6 +26,16 @@ public class Poster implements Serializable {
 	public void setProfilePath(String profilePath) {
 		this.profilePath = profilePath;
 	}
+
+	public String getVideoPath() {
+		return videoPath;
+	}
+
+	public void setVideoPath(String videoPath) {
+		this.videoPath = videoPath;
+	}
+	
+	
 
 }
 

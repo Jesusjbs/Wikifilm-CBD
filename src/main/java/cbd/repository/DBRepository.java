@@ -140,49 +140,49 @@ public class DBRepository {
 			// Populate Movies
 			Movie m1 = new Movie("Soy leyenda", LocalDate.of(2007, 12, 19), "1h 40m",
 					"Año 2012. Robert Neville es el último hombre vivo que hay sobre la Tierra, pero no está solo. Los demás seres humanos se han convertido en unos mutantes nocturnos llamados \"Darkseekers\" y todos ansían beber su sangre. Durante el día vive en estado de alerta, como un cazador, y busca a los muertos vivientes mientras duermen; pero durante la noche debe esconderse de ellos y esperar el amanecer. Esta pesadilla empezó hace tres años: Neville era un brillante científico, pero no pudo impedir la expansión de un terrible virus creado por el hombre. Él ha sobrevivido porque es inmune al virus; todos los días envía mensajes por radio con la esperanza de que haya otros supervivientes, pero es inútil. Lo único que puede hacer es buscar una fórmula que le permita utilizar su sangre inmune para devolverles a los hombres su naturaleza. Pero está en inferioridad de condiciones y el tiempo se acaba.",
-					"Drama, Ciencia ficción, Suspense", "/suoz4D4dctVraPhC8HqD5xnpfsa.jpg");
+					"Drama, Ciencia ficción, Suspense", "/suoz4D4dctVraPhC8HqD5xnpfsa.jpg", "F53gHFtGSwQ");
 			m1.setActors(Arrays.asList(a3));
 			em.persist(m1);
 			
 			Movie m2 = new Movie("The Batman", LocalDate.of(2022, 3, 4), "2h 56m",
 					"Cuando un asesino se dirige a la élite de Gotham con una serie de maquinaciones sádicas, un rastro de pistas crípticas envía Batman a una investigación en los bajos fondos. A medida que las pruebas comienzan a acercarse a su casa y se hace evidente la magnitud de los planes del autor, Batman debe forjar nuevas relaciones, desenmascarar al culpable y hacer justicia al abuso de poder y la corrupción que durante mucho tiempo han asolado Gotham City.",
-					"Crimen, Misterio, Suspense", "/mo7teil1qH0SxgLijnqeYP1Eb4w.jpg");
+					"Crimen, Misterio, Suspense", "/mo7teil1qH0SxgLijnqeYP1Eb4w.jpg","gRdF4mbJ4Vo");
 			m2.setActors(Arrays.asList(a4));
 			em.persist(m2);
 			
 			Movie m3 = new Movie("El Padrino", LocalDate.of(1972, 10, 20), "2h 55m",
 					"Don Vito Corleone, conocido dentro de los círculos del hampa como 'El Padrino', es el patriarca de una de las cinco familias que ejercen el mando de la Cosa Nostra en Nueva York en los años cuarenta. Don Corleone tiene cuatro hijos: una chica, Connie, y tres varones; Sonny, Michael y Fredo. Cuando el Padrino reclina intervenir en el negocio de estupefacientes, empieza una cruenta lucha de violentos episodios entre las distintas familias del crimen organizado.",
-					"Drama, Crimen", "/wLXd1Cd0XW7DhXayfC0Ok5ago9r.jpg");
+					"Drama, Crimen", "/wLXd1Cd0XW7DhXayfC0Ok5ago9r.jpg","v72XprPxy3E");
 			m3.setActors(Arrays.asList(a5));
 			em.persist(m3);
 			
 			Movie m4 = new Movie("La milla verde", LocalDate.of(2000, 2, 18), "3h 09m",
 					"En el sur de los Estados Unidos, en plena Depresión, Paul Edgecomb es un vigilante penitenciario a cargo de la Milla Verde, un pasillo que separa las celdas de los reclusos condenados a la silla eléctrica. Esperando su ejecución está John Coffey, un gigantesco negro acusado de asesinar brutalmente a dos hermanas de nueve años. Tras una personalidad ingenua, Coffey esconde un don sobrenatural prodigioso. A medida que transcurre la historia, Paul Edgecomb aprende que los milagros ocurren... incluso en los lugares más insospechados.",
-					"Fantasía, Drama, Crimen", "/1EFS40uFzv5ZVLSpu3xqYqnou67.jpg");
+					"Fantasía, Drama, Crimen", "/1EFS40uFzv5ZVLSpu3xqYqnou67.jpg","hBtSF4-cnzk");
 			m4.setActors(Arrays.asList(a6));
 			em.persist(m4);
 			
 			Movie m5 = new Movie("Forrest Gump", LocalDate.of(1994, 9, 23), "2h 22m",
 					"Forrest Gump es un chico con deficiencias mentales no muy profundas y con alguna incapacidad motora que, a pesar de todo, llegará a convertirse, entre otras cosas, en un héroe durante la Guerra del Vietnam. Su persistencia y bondad le llevarán a conseguir una gran fortuna, ser objeto del clamor popular y a codearse con las más altas esferas sociales y políticas del país. Siempre sin olvidar a Jenny, su gran amor desde que era niño.",
-					"Comedia, Drama, Romance", "/azV6hV99lYkdhydsQbJCI6FqMl4.jpg");
+					"Comedia, Drama, Romance", "/azV6hV99lYkdhydsQbJCI6FqMl4.jpg","Cyh1LpxnaxI");
 			m5.setActors(Arrays.asList(a6));
 			em.persist(m5);
 			
 			Movie m6 = new Movie("Cadena perpetua", LocalDate.of(1995, 2, 24), "2h 23m",
 					"Acusado del asesinato de su mujer, Andrew Dufresne, tras ser condenado a cadena perpetua, es enviado a la prisión de Shawshank. Con el paso de los años conseguirá ganarse la confianza del director del centro y el respeto de sus compañeros presidiarios, especialmente de Red, el jefe de la mafia de los sobornos.",
-					"Drama, Crimen", "/dc1fX265fZIIY5Hab8I7CdETyJy.jpg");
+					"Drama, Crimen", "/dc1fX265fZIIY5Hab8I7CdETyJy.jpg","4u87tmlj4oE");
 			m6.setActors(Arrays.asList(a7, a8));
 			em.persist(m6);
 			
 			Movie m7 = new Movie("En busca de la felicidad", LocalDate.of(2007, 2, 2), "1h 55m",
 					"Chris Gardner es un vendedor brillante y con talento, pero su empleo no le permite cubrir sus necesidades más básicas. Tanto es así que acaban echándolo, junto a su hijo de cinco años, de su piso de San Francisco y no tienen ningún lugar al que ir. Cuando Gardner consigue hacer unas prácticas en una prestigiosa correduría de bolsa, los dos protagonistas tendrán que afrontar muchas adversidades parar hacer realidad su sueño de una vida mejor. Basada en hechos reales.",
-					"Drama", "/qF6JFr6IdfNep0x6yw3i7S8avAb.jpg");
+					"Drama", "/qF6JFr6IdfNep0x6yw3i7S8avAb.jpg","rxtGMH7OrLc");
 			m7.setActors(Arrays.asList(a3));
 			em.persist(m7);
 			
 			Movie m8 = new Movie("El pianista", LocalDate.of(2002, 10, 25), "2h 30m",
 					"Varsovia, 1939. El pianista polaco de origen judío Wladyslaw Szpilman (Adrien Brody) interpreta un tema de Chopin en la radio nacional de Polonia mientras la aviación alemana bombardea la capital. El régimen nazi ha invadido el país, y como hace en otros países invadidos, lleva a cabo la misma política con respecto a los judíos. Así Szpilman y toda su familia -sus padres, su hermano y sus dos hermanas- se ven obligados a dejar su casa y todo lo que les pertenece para trasladarse con miles de personas de origen judío al ghetto de Varsovia. Mientras Wladyslaw trabaja como pianista en un restaurante propiedad de un judío que colabora con los nazis, su hermano Henryk (Ed Stoppard) prefiere luchar contra los nazis. Pero tres años más tarde, los habitantes del ghetto son trasladados en trenes hacia campos de concentración.",
-					"Drama, Bélica", "/mxfLOWnHnSlbdraKfzRn5mqoqk7.jpg");
+					"Drama, Bélica", "/mxfLOWnHnSlbdraKfzRn5mqoqk7.jpg","BFwGqLa_oAo");
 			m8.setActors(Arrays.asList(a9));
 			em.persist(m8);
 
@@ -190,50 +190,50 @@ public class DBRepository {
 			Serie s1 = new Serie("Vikingos", LocalDate.of(2013, 3, 3), "45m",
 					"Sigue las aventuras de Ragnar Lothbrok, el héroe más grande de su época. La serie narra las sagas de la banda de hermanos vikingos de Ragnar y su familia, cuando él se levanta para convertirse en el rey de las tribus vikingas. Además de ser un guerrero valiente, Ragnar encarna las tradiciones nórdicas de la devoción a los dioses, la leyenda dice que él era un descendiente directo de Odín, el dios de la guerra y los guerreros.",
 					6, "Action & Adventure, Drama, War & Politics", "Netflix, Prime Video, History", true,
-					"/uNFSCxeZsZVIQ1TrD6mzu6uMQEb.jpg");
+					"/uNFSCxeZsZVIQ1TrD6mzu6uMQEb.jpg","CLVZmXzeZx8");
 			s1.setActors(Arrays.asList(a1, a2));
 			em.persist(s1);
 			
 			Serie s2 = new Serie("Breaking Bad", LocalDate.of(2008, 1, 20), "45m",
 					"Tras cumplir 50 años, Walter White (Bryan Cranston), un profesor de química de un instituto de Albuquerque, Nuevo México, se entera de que tiene un cáncer de pulmón incurable. Casado con Skyler (Anna Gunn) y con un hijo discapacitado (RJ Mitte), la brutal noticia lo impulsa a dar un drástico cambio a su vida: decide, con la ayuda de un antiguo alumno (Aaron Paul), fabricar anfetaminas y ponerlas a la venta. Lo que pretende es liberar a su familia de problemas económicos cuando se produzca el fatal desenlace.",
-					5, "Drama", "Netflix", true,"/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg");
+					5, "Drama", "Netflix", true,"/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg","HhesaQXLuRY");
 			s2.setActors(Arrays.asList(a10, a11));
 			em.persist(s2);
 			
 			Serie s3 = new Serie("Big Bang", LocalDate.of(2008, 1, 20), "22m",
 					"Mientras los físicos Leonard y Sheldon completan su pandilla de frikis con Howard y Raj, la aspirante a actriz Penny ocupa el piso de enfrente.",
-					12, "Comedia", "Amazon Prime Video", true,"/2bDQWCvFxRGhdvThTJvVxueEoLl.jpg");
+					12, "Comedia", "Amazon Prime Video", true,"/2bDQWCvFxRGhdvThTJvVxueEoLl.jpg","JTnpj6fXUIo");
 			s3.setActors(Arrays.asList(a12));
 			em.persist(s3);
 			
 			Serie s4 = new Serie("Vivir sin permiso", LocalDate.of(2018, 9, 24), "1h 20m",
 					"La serie narra el declive de un líder poderoso, dominante y temido que ha controlado con mano de hierro durante años la comunidad en la que vive y el espectáculo cruel y despiadado que ofrecen sus familiares y allegados por hacerse con el control de su imperio. Pasiones, rivalidades e intereses enfrentados son los ejes en torno a los que se vertebra la serie.",
-					2, "Crimen, Drama", "Netflix", true,"/58Z3KlTeOe1rHwa6x3xSRRVTIXk.jpg");
+					2, "Crimen, Drama", "Netflix", true,"/58Z3KlTeOe1rHwa6x3xSRRVTIXk.jpg","4Apr_Ce4eag");
 			s4.setActors(Arrays.asList(a13));
 			em.persist(s4);
 			
 			Serie s5 = new Serie("El Príncipe", LocalDate.of(2014, 2, 4), "1h 15m",
 					"La historia de \"El Príncipe\" se sitúa en la conflictiva barriada de El Príncipe Alonso, en Ceuta, lugar donde Fran (José Coronado) no duda en imponer el orden recurriendo a métodos poco ortodoxos, algo que parece peligrar con la llegada de Morey (Álex González), un agente que llega a la comisaría con la misión de investigar una supuesta colaboración de la policía con una red yihadista. Su situación se complicará con la llegada a su vida de Fátima (Hiba Abouk), una joven profesora musulmana que trata de encontrar a su hermano pequeño, desaparecido hace algún tiempo, y que se opone a las actividades delictivas de su otro hermano (Rubén Cortada).",
-					2, "Crimen, Drama", "Movistar +", true,"/9edkwqws2gstULZDzDMBJEBulkA.jpg");
+					2, "Crimen, Drama", "Movistar +", true,"/9edkwqws2gstULZDzDMBJEBulkA.jpg","_bc8ezNGfUA");
 			s5.setActors(Arrays.asList(a13,a14,a15));
 			em.persist(s5);
 			
 			Serie s6 = new Serie("Violetta", LocalDate.of(2012, 5, 14), "45m",
 					"Violetta cuenta la historia de una adolescente con talento musical que regresa a su Buenos Aires natal con su padre, Herman, después de vivir en Europa durante varios años, navegando por las pruebas y tribulaciones de creciendo.",
-					3, "Familia, Kids", "Disney +", true,"/b3MUGJeKakAZwQa7lNJxTP1pJmD.jpg");
+					3, "Familia, Kids", "Disney +", true,"/b3MUGJeKakAZwQa7lNJxTP1pJmD.jpg","idRVMZUPkNA");
 			s6.setActors(Arrays.asList(a16));
 			em.persist(s6);
 			
 			Serie s7 = new Serie("Rick y Morty", LocalDate.of(2012, 12, 2), "22m",
 					"Comedia animada que narra las aventuras de un científico loco Rick Sánchez, que regresa después de 20 años para vivir con su hija, su marido y sus hijos Morty y Summer.",
-					5, "Animación, Comedia, Sci-Fi & Fantasy, Action & Adventure", "Netflix", false,"/5Yiep9EwcQgLolg013ETBVqHxuD.jpg");
+					5, "Animación, Comedia, Sci-Fi & Fantasy, Action & Adventure", "Netflix", false,"/5Yiep9EwcQgLolg013ETBVqHxuD.jpg","E8cXKMR9a1Q");
 			em.persist(s7);
 			
 			Serie s8 = new Serie("El Chapulín Colorado", LocalDate.of(1973, 4, 11), "22m",
 					"El Chapulín Colorado es una serie de televisión mexicana, parodia de los programas de superhéroes, creada por Chespirito. Fue transmitida en México por primera vez en 1970 como un segmento del programa \"Los Supergenios de la mesa cuadrada\" donde actuaba Chespirito y tres de los futuros miembros de la serie. Entre 1972 y 1979 paso a tener su propio programa, al igual que su producción hermana El Chavo del Ocho y tuvo un capítulo final donde se agradeció a los espectadores. Pero luego continuo como un segmento de la serie Chespirito hasta 1993. Su nombre se refiere a un chapulín (el nombre dado en México a una especie de saltamontes) de color rojo o colorado.\r\n" + 
 					"\r\n" + 
 					"No aparece en el programa ningún otro superhéroe de ficción, a excepción de Super Sam, parodia de Superman y el Tio Sam.",
-					1, "Comedia, Familia, Crimen, Sci-Fi & Fantasy, Misterio", "Las Estrellas", true,"/qF8NDpVBSTDhdLlEjVAhNhfqB8K.jpg");
+					1, "Comedia, Familia, Crimen, Sci-Fi & Fantasy, Misterio", "Las Estrellas", true,"/qF8NDpVBSTDhdLlEjVAhNhfqB8K.jpg","jPSHa7b81CA");
 			s8.setActors(Arrays.asList(a17));
 			em.persist(s8);
 
