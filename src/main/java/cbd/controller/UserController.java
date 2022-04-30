@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import cbd.model.User;
 import cbd.repository.UserRepository;
+import cbd.util.PasswordException;
 
 public class UserController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -23,6 +24,7 @@ public class UserController extends HttpServlet {
 		String username = request.getParameter("user");
 		String password = request.getParameter("pass");
 		String logout = request.getParameter("logout");
+		String register = request.getParameter("register");
 
 		RequestDispatcher rd = null;
 
@@ -32,15 +34,37 @@ public class UserController extends HttpServlet {
 			request.getSession().removeAttribute("username");
 			rd = request.getRequestDispatcher("/index.jsp");
 		} else {
-			User uResult = uc.getUser(username, password, em);
-			if (uResult != null) {
+			if (register != null && username != null && !username.trim().equals("") && password != null
+					&& !password.trim().equals("")) {
+				// Register
+				try {
+					uc.register(username, password, emf);
+					rd = request.getRequestDispatcher("/index.jsp");
+				} catch (PasswordException e) {
+					request.setAttribute("mensaje",
+							"La contraseña debe tener entre 8 y 20 caracteres y contener al menos una mayúscula, una minúscula, un dígito y un carácter especial.");
+					rd = request.getRequestDispatcher("/register.jsp");
+				} catch (Exception e) {
+					e.printStackTrace();
+					request.setAttribute("mensaje", "Ya existe un usuario con ese nombre en nuestras bases de datos.");
+					rd = request.getRequestDispatcher("/register.jsp");
+				}
+			} else if (register == null && uc.getUser(username, password, em) != null) {
+				// Login
+				em = emf.createEntityManager();
+				User uResult = uc.getUser(username, password, em);
 				rd = request.getRequestDispatcher("/index.jsp");
 				request.getSession().setAttribute("aToken", uResult.getToken());
 				request.getSession().setAttribute("username", uResult.getUsername());
 			} else {
-				request.setAttribute("mensaje",
-						"El nombre de usuario y la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.");
-				rd = request.getRequestDispatcher("/login.jsp");
+				if (register == null) {
+					request.setAttribute("mensaje",
+							"El nombre de usuario y la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.");
+					rd = request.getRequestDispatcher("/login.jsp");
+				} else {
+					request.setAttribute("mensaje", "No ha introducido un usuario o una contraseña válida");
+					rd = request.getRequestDispatcher("/register.jsp");
+				}
 			}
 		}
 		rd.forward(request, response);

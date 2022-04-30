@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="./css/style_login.css">
-<title>Iniciar Sesión</title>
+<title>Registrarse</title>
 </head>
 <body>
 
@@ -20,17 +20,14 @@
 	</header>
 
 	<div id="id_div">
-		<h1>Inicio de sesión</h1>
+		<h1>Registro</h1>
 		<form id="loginForm" action="UserController" method="post">
-			<input size=30 id="id_user" type="text" placeholder="Inserte usuario"
+			<input type="hidden" name="register" value="register" checked /> <input
+				size=30 id="id_user" type="text" placeholder="Inserte usuario"
 				name="user" required /> <input size=30 id="id_pass" type="password"
 				placeholder="Inserte contraseña" name="pass" required />
-			<button id="id_Btn" title="Iniciar Sesión" type="submit">Iniciar
-				Sesión</button>
+			<button id="id_Btn" title="Iniciar Sesión" type="submit">Registrarse</button>
 		</form>
-		<p>
-			¿No tienes una cuenta? <a href="/register.jsp">Crea una</a>
-		</p>
 	</div>
 	<div id="id_divMensaje">
 		<p style="font-size: large;">${requestScope.mensaje}</p>

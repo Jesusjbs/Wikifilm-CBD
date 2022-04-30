@@ -10,6 +10,7 @@ body {
 	height: 30px;
 	margin: auto;
 	margin-top: 10%;
+	text-align: center;
 }
 
 #id_user {
@@ -37,5 +38,5 @@ body {
 #id_divMensaje {
     margin: auto;
     text-align: center;
-    margin-top: 5rem;
+    margin-top: 12rem;
 }

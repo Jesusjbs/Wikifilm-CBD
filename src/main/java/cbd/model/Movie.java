@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Past;
 
 @Entity
 public class Movie extends Poster implements Serializable {
@@ -28,7 +27,6 @@ public class Movie extends Poster implements Serializable {
 	@Unique
 	private String title;
 
-	@Past
 	private LocalDate released;
 	
 	private String runtime;

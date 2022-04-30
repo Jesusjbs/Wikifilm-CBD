@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Past;
 
 @Entity
 public class Actor extends Poster implements Serializable {
@@ -21,9 +20,7 @@ public class Actor extends Poster implements Serializable {
 	@Unique
 	private String name;
 	
-	@Past
 	private LocalDate birthday;
-	
 	private LocalDate deathday;
 	private Integer age;
 	private String biography;

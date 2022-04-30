@@ -9,10 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
 public class Comment implements Serializable {
@@ -27,11 +24,8 @@ public class Comment implements Serializable {
 	private User user;
 
 	@NotNull
-	@Size(min=3,max=100)
 	private String content;
 
-	@Min(0)
-	@Max(5)
 	private Integer rating;
 
 	private LocalDate date;
