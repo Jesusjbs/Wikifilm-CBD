@@ -17,7 +17,7 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Serie extends Poster implements Serializable {
+public class Serie extends Path implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -52,7 +52,7 @@ public class Serie extends Poster implements Serializable {
 	}
 
 	public Serie(String title, LocalDate released, String runtime, String plot, Integer totalSeasons, String genre,
-			String channel, Boolean terminated, String poster) {
+			String channel, Boolean terminated, String poster,String video) {
 		this.title = title;
 		this.released = released;
 		this.runtime = runtime;
@@ -62,6 +62,7 @@ public class Serie extends Poster implements Serializable {
 		this.channel = channel;
 		this.terminated = terminated;
 		this.profilePath = poster;
+		this.videoPath = video;
 	}
 
 	public LocalDate getReleased() {

@@ -10,7 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Actor extends Poster implements Serializable {
+public class Actor extends Path implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
