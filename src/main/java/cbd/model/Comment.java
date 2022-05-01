@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Comment implements Serializable {
@@ -23,7 +22,6 @@ public class Comment implements Serializable {
 	@JoinColumn(name = "user_id")
 	private User user;
 
-	@NotNull
 	private String content;
 
 	private Integer rating;

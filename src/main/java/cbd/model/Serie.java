@@ -14,7 +14,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Serie extends Path implements Serializable {
@@ -39,7 +38,6 @@ public class Serie extends Path implements Serializable {
 	
 	private String channel;
 
-	@NotNull
 	private Boolean terminated;
 
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

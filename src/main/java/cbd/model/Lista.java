@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class Lista implements Serializable {
@@ -25,7 +24,6 @@ public class Lista implements Serializable {
 
 	private String description;
 
-	@NotNull
 	private Boolean privateList;
 
 	@ManyToOne(optional = true)

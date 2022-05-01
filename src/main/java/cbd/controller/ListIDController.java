@@ -42,19 +42,20 @@ public class ListIDController extends HttpServlet {
 		String idItemDelete = request.getParameter("itemDelete");
 
 		ListRepository lr = new ListRepository();
-		if (idListDelete != "" && idListDelete != null) {
+		if (idListDelete != null && !idListDelete.trim().equals("")) {
 			lr.deleteList(aToken, Integer.valueOf(idListDelete), em);
 			rd = request.getRequestDispatcher("/ListController");
-		} else if (idList != "" && idList != null && (description == "" || description == null)) {
+		} else if (idList != null && !idList.trim().equals("")
+				&& (description == null || description.trim().equals(""))) {
 			request.setAttribute("idLista", idList);
 			request.setAttribute("nombre", name);
 			request.setAttribute("description", descriptionEdit);
 			request.setAttribute("tipo", tipoEdit);
 			rd = request.getRequestDispatcher("/editList.jsp");
-		} else if (description != "" && description != null) {
+		} else if (description != null && !description.trim().equals("")) {
 			lr.updateList(aToken, Integer.valueOf(idList), description, name, Boolean.valueOf(tipoEdit), em);
 			rd = request.getRequestDispatcher("/ListController");
-		} else if (idItemDelete != null && idItemDelete != "") {
+		} else if (idItemDelete != null && !idItemDelete.trim().equals("")) {
 			lr.deleteItem(aToken, Integer.valueOf(idSee), Integer.valueOf(idItemDelete), media, em);
 			em = emf.createEntityManager();
 			Pair<List<Movie>, List<Serie>> result = lr.getListById(aToken, Integer.valueOf(idSee), em);
@@ -64,7 +65,7 @@ public class ListIDController extends HttpServlet {
 			request.setAttribute("itemsSeries", result.b);
 
 			rd = request.getRequestDispatcher("/idList.jsp");
-		} else if (idSee != "" && idSee != null) {
+		} else if (idSee != null && !idSee.trim().equals("")) {
 			Pair<List<Movie>, List<Serie>> result = lr.getListById(aToken, Integer.valueOf(idSee), em);
 			request.setAttribute("idLista", idSee);
 			request.setAttribute("nombreLista", name);

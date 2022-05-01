@@ -36,7 +36,7 @@ public class ListController extends HttpServlet {
 			ListRepository lr = new ListRepository();
 			List<Lista> lResult = lr.getLists(aId, em);
 
-			if (titleList == "" || titleList == null) {
+			if (titleList == null || titleList.trim().equals("")) {
 				rd = request.getRequestDispatcher("/list.jsp");
 			} else {
 				em = emf.createEntityManager();

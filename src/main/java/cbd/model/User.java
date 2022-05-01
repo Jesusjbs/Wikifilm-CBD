@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 @Entity
 public class User implements Serializable {
@@ -20,10 +19,8 @@ public class User implements Serializable {
 
 	String password;
 
-	@NotNull
 	boolean enabled;
 
-	@NotNull
 	@Unique
 	Long token;
 
