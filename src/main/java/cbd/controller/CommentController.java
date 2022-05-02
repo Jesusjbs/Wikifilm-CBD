@@ -30,7 +30,7 @@ public class CommentController extends HttpServlet {
 
 		Long token = (Long) req.getSession().getAttribute("aToken");
 
-		if (id != null && !"".equals(id) && comment != null && !"".equals(comment)) {
+		if (id != null && !"".equals(id) && comment != null && !"".equals(comment.trim())) {
 			// Get user
 			UserRepository uResource = new UserRepository();
 			User author = uResource.getUserByToken(token, em);
@@ -48,7 +48,7 @@ public class CommentController extends HttpServlet {
 
 				req.setAttribute("titleQuery", id);
 				req.setAttribute("mediaQuery", media);
-				req.setAttribute("message", "Se ha publicado correctamente");
+				req.setAttribute("message", "Se ha publicado correctamente.");
 				req.getRequestDispatcher("/TitleController").forward(req, resp);
 			} catch (Exception e) {
 				e.printStackTrace();

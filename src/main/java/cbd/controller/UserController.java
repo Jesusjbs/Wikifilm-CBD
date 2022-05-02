@@ -62,7 +62,7 @@ public class UserController extends HttpServlet {
 							"El nombre de usuario y la contraseña que ingresaste no coinciden con nuestros registros. Por favor, revisa e inténtalo de nuevo.");
 					rd = request.getRequestDispatcher("/login.jsp");
 				} else {
-					request.setAttribute("mensaje", "No ha introducido un usuario o una contraseña válida");
+					request.setAttribute("mensaje", "No ha introducido un usuario o una contraseña válida.");
 					rd = request.getRequestDispatcher("/register.jsp");
 				}
 			}

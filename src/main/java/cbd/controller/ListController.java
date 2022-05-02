@@ -40,9 +40,8 @@ public class ListController extends HttpServlet {
 				rd = request.getRequestDispatcher("/list.jsp");
 			} else {
 				em = emf.createEntityManager();
-				Lista lcResult = lr.createList((Long) sesion.getAttribute("aToken"), titleList, em);
-				request.setAttribute("mensaje",
-						"La lista " + titleList + " fue creada correctamente con id " + lcResult.getId());
+				lr.createList((Long) sesion.getAttribute("aToken"), titleList, em);
+				request.setAttribute("mensaje", "La lista " + titleList + " fue creada correctamente.");
 				rd = request.getRequestDispatcher("/createList.jsp");
 			}
 			request.setAttribute("lista", lResult);

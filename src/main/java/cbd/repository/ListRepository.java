@@ -29,7 +29,7 @@ public class ListRepository {
 		return result;
 	}
 
-	public Lista createList(Long aToken, String title, EntityManager em) {
+	public void createList(Long aToken, String title, EntityManager em) {
 		Lista result = new Lista(title);
 
 		try {
@@ -44,7 +44,6 @@ public class ListRepository {
 				em.getTransaction().rollback();
 			em.close();
 		}
-		return result;
 	}
 
 	public void deleteList(Long aToken, Integer listId, EntityManager em) {
