@@ -47,7 +47,6 @@ public class UserRepository {
 
 	public void register(String username, String password, EntityManagerFactory emf) throws PasswordException, NoSuchAlgorithmException {
 		EntityManager em = emf.createEntityManager();
-		System.out.println("Usuario1");
 		if (!password.matches("^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,20}$")) {
 			throw new PasswordException();
 		}
