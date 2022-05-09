@@ -15,7 +15,7 @@ public class UserRepository {
 		User result = new User();
 		try {
 			em.getTransaction().begin();
-			result = em.createQuery("SELECT u FROM User u WHERE u.username =:user and u.password =:pass", User.class)
+			result = em.createQuery("SELECT u FROM User u WHERE LOWER(u.username) = LOWER(:user) and u.password =:pass", User.class)
 					.setParameter("user", username).setParameter("pass", password).getSingleResult();
 		} catch (Exception e) {
 			e.printStackTrace();
