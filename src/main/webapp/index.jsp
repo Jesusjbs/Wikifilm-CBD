@@ -70,7 +70,7 @@
 	</div>
 	<div>
 		<form id="populateForm" action="DBController" method="post">
-			<button id="id_searchBtn" type="submit" name="populateBtn">Popular
+			<button id="id_searchBtn" type="submit" name="populateBtn">Poblar
 				BD</button>
 		</form>
 	</div>
